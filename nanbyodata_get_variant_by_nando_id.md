@@ -1,15 +1,19 @@
-# Get variant data in MGeND
+# Get variant data in ClinVar or MGeND
 
 ## Parameters
 
 * `nando_id` NANDO ID
   * default: 1200216
-  * examples: 1200016,1200462
-  
+  * examples: 1200216 (variant in both clinvar and mgend)
+* `target` target database (either clinvar or mgend)
+  * default: clinvar
+  * examples: clinvar mgend
+
 ## Endpoint
 https://nanbyodata.jp/sparql
 
 ## `nando2mondo2mgend`
+
 ```sparql
 
 PREFIX nando: <http://nanbyodata.jp/ontology/NANDO_>
@@ -29,6 +33,7 @@ FROM <https://nanbyodata.jp/rdf/mgend>
 FROM <https://nanbyodata.jp/rdf/ontology/mondo>
 FROM <https://nanbyodata.jp/rdf/ontology/nando>
 WHERE {
+  FILTER ("{{target}}" = "mgend")
   GRAPH <https://nanbyodata.jp/rdf/ontology/nando> {
     OPTIONAL {
       nando:{{nando_id}} skos:exactMatch | skos:closeMatch ?mondo .
@@ -56,6 +61,92 @@ WHERE {
     ?variantID m2r:gene ?mgendogeneID.
     ?mgendogeneID rdfs:label ?genelabel;
                   rdfs:seeAlso ?geneXref.
+  }
+}
+```
+
+## `nando2mondo2medgen`
+
+```sparql
+PREFIX nando: <http://nanbyodata.jp/ontology/NANDO_>
+PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
+PREFIX skos: <http://www.w3.org/2004/02/skos/core#>
+PREFIX mo: <http://med2rdf/ontology/medgen#>
+PREFIX dct: <http://purl.org/dc/terms/>
+PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
+
+SELECT DISTINCT ?mondo ?medgen_id ?medgen_cid
+WHERE {
+  FILTER ("{{target}}" = "clinvar")
+  GRAPH <https://nanbyodata.jp/rdf/ontology/nando> {
+    nando:{{nando_id}} skos:exactMatch | skos:closeMatch ?mondo .
+  }
+  GRAPH <https://nanbyodata.jp/rdf/medgen> {
+    ?medgen_uri
+    dct:identifier ?medgen ;
+    mo:mgconso ?mgconso .
+    ?mgconso
+    dct:source mo:MONDO ;
+    rdfs:seeAlso ?mondo.
+    BIND (CONCAT("http://ncbi.nlm.nih.gov/medgen/",?medgen) AS ?medgen_id)
+    BIND (IRI(?medgen_id) AS ?medgen_cid)
+  }
+}
+```
+
+## `medgen`
+
+```javascript
+({nando2mondo2medgen}) => {
+  return nando2mondo2medgen.results.bindings.map(b => b.medgen_cid.value);
+}
+```
+
+## Endpoint
+https://grch38.togovar.org/sparql
+
+## `medgen2clinvar2togovar`
+
+```sparql
+PREFIX cvo:    <http://purl.jp/bio/10/clinvar/>
+PREFIX dct:    <http://purl.org/dc/terms/>
+PREFIX medgen: <http://ncbi.nlm.nih.gov/medgen/>
+PREFIX rdf:    <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
+PREFIX rdfs:   <http://www.w3.org/2000/01/rdf-schema#>
+PREFIX sio:    <http://semanticscience.org/resource/>
+PREFIX tgvo:   <http://togovar.biosciencedbc.jp/vocabulary/>
+
+SELECT DISTINCT ?tgv_id ?rs_id ?variant ?title ?condition ?clinvar ?vcv ?type ?med_id ?interpretation
+WHERE {
+  VALUES ?med_id { {{#each medgen}} <{{this}}> {{/each}} }
+
+  GRAPH <http://togovar.org/clinvar> {
+    ?med_id ^dct:references ?_classified_condition .
+
+    ?_classified_condition ^cvo:classified_condition/^cvo:classified_condition_list ?_rcv ;
+      rdfs:label ?condition .
+
+    ?_rcv cvo:rcv_classifications/cvo:germline_classification/cvo:description/cvo:description ?interpretation ;
+      cvo:rcv_classifications/cvo:germline_classification/cvo:description/cvo:date_last_evaluated ?last_evaluated ;
+      ^cvo:rcv_accession/^cvo:rcv_list/^cvo:classified_record ?clinvar .
+
+    ?clinvar a cvo:VariationArchiveType ;
+      rdfs:label ?title ;
+      cvo:accession ?vcv ;
+      cvo:variation_id ?vid .
+
+    BIND(STR(?vid) AS ?variation_id)
+  }
+
+  GRAPH <http://togovar.org/variant/annotation/clinvar> {
+    ?variant dct:identifier ?variation_id .
+  }
+
+  GRAPH <http://togovar.org/variant> {
+    OPTIONAL {
+      ?variant dct:identifier ?tgv_id ;
+               rdf:type ?type.
+    }
   }
 }
 ```
@@ -97,7 +188,110 @@ async ({nando2mondo2mgend}) => {
 }
 ```
 
-## Output
+## `clinvar_togovar`
+
+```javascript
+async ({medgen2clinvar2togovar}) => {
+  const locations = [...new Map(medgen2clinvar2togovar.results.bindings
+    .map(d => {
+      const positionMatch = d.variant && d.variant.value
+        ? d.variant.value.match(/http:\/\/identifiers.org\/hco\/(.+)\/GRCh3[78]#(\d+)/)
+        : null;
+      if (!positionMatch) {
+        return null;
+      }
+
+      const chromosome = positionMatch[1];
+      const position = Number(positionMatch[2]);
+      return [`${chromosome}:${position}`, {chromosome, position}];
+    })
+    .filter(Boolean)
+  ).values()];
+
+  const responses = await Promise.all(locations.map(async location => {
+    const response = await fetch('https://grch38.togovar.org/api/search/variant?stat=0', {
+      method: 'POST',
+      headers: {
+        Accept: 'application/json',
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify({
+        query: {location},
+        limit: 100
+      })
+    });
+
+    if (!response.ok) {
+      throw new Error(`TogoVar API returned ${response.status} for ${location.chromosome}:${location.position}`);
+    }
+
+    const body = await response.json();
+    return [`${location.chromosome}:${location.position}`, body.data || []];
+  }));
+
+  return Object.fromEntries(responses);
+}
+```
+
+## `clinvar_variants`
+
+```javascript
+({medgen2clinvar2togovar, nando2mondo2medgen, clinvar_togovar}) => {
+  const medgen2mondo = {};
+  nando2mondo2medgen.results.bindings.forEach(x => {
+    medgen2mondo[x.medgen_id.value] = x.mondo.value;
+  });
+
+  return medgen2clinvar2togovar.results.bindings.map(x => {
+    const positionMatch = x.variant && x.variant.value
+      ? x.variant.value.match(/http:\/\/identifiers.org\/hco\/(.+)\/GRCh3[78]#(\d+)/)
+      : null;
+    const position = positionMatch ? positionMatch[1] + ":" + positionMatch[2] : "";
+    const tgv_id = x.tgv_id && x.tgv_id.value ? x.tgv_id.value : "";
+    const medgenUri = x.med_id && x.med_id.value ? x.med_id.value : "";
+    const mondo = medgenUri && medgen2mondo[medgenUri] ? medgen2mondo[medgenUri] : "";
+    const variantsAtLocation = clinvar_togovar[position] || [];
+    const togovarVariant = variantsAtLocation.find(variant => variant.id === tgv_id)
+      || variantsAtLocation[0];
+    const frequencies = togovarVariant?.frequencies || [];
+    const altAltCounts = frequencies
+      .map(record => record.genotype?.alt_homo_count ?? record.aac)
+      .filter(Number.isFinite);
+    const altRefCounts = frequencies
+      .map(record => record.genotype?.hetero_count ?? record.arc)
+      .filter(Number.isFinite);
+    const mgendLink = togovarVariant?.external_link?.mgend?.[0];
+
+    return {
+      source: "clinvar",
+      tgv_id: tgv_id,
+      tgv_link: tgv_id ? "https://grch38.togovar.org/variant/" + tgv_id : "",
+      position: position,
+      title: x.title && x.title.value ? x.title.value : "",
+      Clinvar_link: x.clinvar && x.clinvar.value ? x.clinvar.value : "",
+      Clinvar_id: x.vcv && x.vcv.value ? x.vcv.value : "",
+      ClinVar_id: x.vcv && x.vcv.value ? x.vcv.value : "",
+      Interpretation: x.interpretation && x.interpretation.value ? x.interpretation.value : "",
+      type: x.type && x.type.value ? x.type.value.replace("http://genome-variation.org/resource#", "") : "",
+      MedGen_id: medgenUri ? medgenUri.replace("http://ncbi.nlm.nih.gov/medgen/", "") : "",
+      MedGen_link: medgenUri,
+      mondo: mondo,
+      mondo_id: mondo ? mondo.replace("http://purl.obolibrary.org/obo/MONDO_", "MONDO:") : "",
+      mondo_url: mondo,
+      genotype_count_alt_alt: altAltCounts.length > 0
+        ? altAltCounts.reduce((sum, count) => sum + count, 0)
+        : "No Data",
+      genotype_count_alt_ref: altRefCounts.length > 0
+        ? altRefCounts.reduce((sum, count) => sum + count, 0)
+        : "No Data",
+      mgend_id: mgendLink?.title || "",
+      mgend_url: mgendLink?.xref || ""
+    };
+  });
+}
+```
+
+## `mgend_variants`
 
 ```javascript
 ({nando2mondo2mgend, togovar}) => {
@@ -148,6 +342,7 @@ async ({nando2mondo2mgend}) => {
       : titleHgvs;
 
     tree.push({
+      source: "mgend",
       omim_id: d.dbxref.value,
       omim_url: d.omimps.value,
       mondo_id: d.mondo.value,
@@ -180,6 +375,21 @@ async ({nando2mondo2mgend}) => {
   });
   return tree;
 };
+```
+
+## `variants`
+
+```javascript
+({target, clinvar_variants, mgend_variants}) => {
+  const normalizedTarget = String(target || "clinvar").toLowerCase();
+  return ["mgend", "medgen"].includes(normalizedTarget) ? mgend_variants : clinvar_variants;
+}
+```
+
+## Output
+
+```javascript
+({variants}) => variants
 ```
 
 ## Description

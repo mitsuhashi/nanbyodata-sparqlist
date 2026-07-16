@@ -14,6 +14,8 @@ https://nanbyodata.jp/sparql
 
 ## `nando2mondo2mgend`
 
+`target=mgend` のときに、NANDO ID から MONDO を経由して MGeND のバリアント候補を取得します。OMIM Phenotypic Series、HGVS、染色体、位置、遺伝子などを NanbyoData RDF から取得します。
+
 ```sparql
 
 PREFIX nando: <http://nanbyodata.jp/ontology/NANDO_>
@@ -67,6 +69,8 @@ WHERE {
 
 ## `nando2mondo2medgen`
 
+`target=clinvar` のときに、NANDO ID から MONDO を経由して MedGen ID を取得します。ClinVar は疾患条件を MedGen ID で参照しているため、この後の ClinVar 検索に使います。
+
 ```sparql
 PREFIX nando: <http://nanbyodata.jp/ontology/NANDO_>
 PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
@@ -96,6 +100,8 @@ WHERE {
 
 ## `medgen`
 
+`nando2mondo2medgen` の結果から MedGen URI だけを配列にします。次の TogoVar SPARQL クエリの `VALUES` 句に渡します。
+
 ```javascript
 ({nando2mondo2medgen}) => {
   return nando2mondo2medgen.results.bindings.map(b => b.medgen_cid.value);
@@ -106,6 +112,8 @@ WHERE {
 https://grch38.togovar.org/sparql
 
 ## `medgen2clinvar2togovar`
+
+MedGen ID に紐づく ClinVar のバリアントを TogoVar SPARQL から取得します。ClinVar accession、HGVS、interpretation、TogoVar ID、variant type、ゲノム上の位置を取得します。
 
 ```sparql
 PREFIX cvo:    <http://purl.jp/bio/10/clinvar/>
@@ -153,6 +161,8 @@ WHERE {
 
 ## `togovar`
 
+MGeND 由来のバリアント位置を使って TogoVar REST API を呼びます。SPARQL だけでは取れない TogoVar ID、MGeND URL、ClinVar URL、genotype count などを補完するために使います。
+
 ```javascript
 async ({nando2mondo2mgend}) => {
   const variants = nando2mondo2mgend.results.bindings;
@@ -189,6 +199,8 @@ async ({nando2mondo2mgend}) => {
 ```
 
 ## `clinvar_togovar`
+
+ClinVar 由来のバリアント位置を使って TogoVar REST API を呼びます。SPARQL だけでは取れない genotype count と MGeND 外部リンクを補完するために使います。
 
 ```javascript
 async ({medgen2clinvar2togovar}) => {
@@ -234,6 +246,8 @@ async ({medgen2clinvar2togovar}) => {
 ```
 
 ## `clinvar_variants`
+
+ClinVar SPARQL の結果と TogoVar REST API の結果を統合し、最終的な ClinVar 用 JSON に整形します。TogoVar REST API から genotype count と MGeND URL も追加します。
 
 ```javascript
 ({medgen2clinvar2togovar, nando2mondo2medgen, clinvar_togovar}) => {
@@ -292,6 +306,8 @@ async ({medgen2clinvar2togovar}) => {
 ```
 
 ## `mgend_variants`
+
+MGeND SPARQL の結果と TogoVar REST API の結果を統合し、最終的な MGeND 用 JSON に整形します。TogoVar REST API から TogoVar ID、MGeND URL、ClinVar URL、genotype count も追加します。
 
 ```javascript
 ({nando2mondo2mgend, togovar}) => {
@@ -379,6 +395,8 @@ async ({medgen2clinvar2togovar}) => {
 
 ## `variants`
 
+`target` パラメータに応じて、ClinVar 用の結果または MGeND 用の結果を選択します。`target=mgend` または `target=medgen` の場合は MGeND、それ以外は ClinVar を返します。
+
 ```javascript
 ({target, clinvar_variants, mgend_variants}) => {
   const normalizedTarget = String(target || "clinvar").toLowerCase();
@@ -387,6 +405,8 @@ async ({medgen2clinvar2togovar}) => {
 ```
 
 ## Output
+
+選択済みの `variants` を JSON として返します。
 
 ```javascript
 ({variants}) => variants

@@ -1,0 +1,46 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>NanbyoData Variant Viewer</title>
+    <script type="module" src="https://togostanza.github.io/metastanza/pagination-table.js" async></script>
+    <link rel="stylesheet" href="./styles.css">
+  </head>
+  <body>
+    <header class="app-header">
+      <div>
+        <p class="eyebrow">NanbyoData SPARQList</p>
+        <h1>Variant Viewer</h1>
+      </div>
+      <a class="source-link" href="https://dev-nanbyodata.dbcls.jp/sparqlist/api/nanbyodata_get_variant_by_nando_id?nando_id=1200216&target=clinvar" target="_blank" rel="noopener noreferrer">API</a>
+    </header>
+
+    <main>
+      <section class="controls" aria-label="Search controls">
+        <label for="nando-id">NANDO ID</label>
+        <div class="control-row">
+          <input id="nando-id" name="nando-id" value="1200216" inputmode="numeric" autocomplete="off">
+          <button id="load-button" type="button">Load variants</button>
+        </div>
+        <p class="hint">Fetches ClinVar and MGeND variants from the dev NanbyoData SPARQList API.</p>
+      </section>
+
+      <section class="status-bar" aria-live="polite">
+        <div id="status">Ready</div>
+        <div id="updated-at"></div>
+      </section>
+
+      <section class="tabs" aria-label="Variant source">
+        <button class="tab-button active" type="button" data-target="clinvar">ClinVar <span id="clinvar-count">0</span></button>
+        <button class="tab-button" type="button" data-target="mgend">MGeND <span id="mgend-count">0</span></button>
+      </section>
+
+      <section class="table-wrap" aria-label="Variant results">
+        <div id="table-view"></div>
+      </section>
+    </main>
+
+    <script src="./app.js"></script>
+  </body>
+</html>

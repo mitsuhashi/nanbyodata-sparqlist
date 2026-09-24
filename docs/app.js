@@ -11,8 +11,8 @@ const columns = {
     { id: "tgv_id", label: "TogoVar_ID", link: "tgv_link" },
     { id: "MedGen_id", label: "MedGen_ID", link: "MedGen_link" },
     { id: "mondo_id", label: "MONDO_ID", link: "mondo" },
-    { id: "genotype_count_alt_alt", label: "Alt/Alt count" },
-    { id: "genotype_count_alt_ref", label: "Ref/Alt count" },
+    { id: "genotype_count_alt_alt", label: "Alt/Alt count", link: "genotype_count_alt_alt_link" },
+    { id: "genotype_count_alt_ref", label: "Ref/Alt count", link: "genotype_count_alt_ref_link" },
     { id: "mgend_id", label: "MGeND ID", link: "mgend_url" }
   ],
   mgend: [
@@ -26,8 +26,8 @@ const columns = {
     { id: "omim_id", label: "OMIM ID", link: "omim_url" },
     { id: "mondo_label", label: "MONDO", link: "mondo_url" },
     { id: "tgv_id", label: "TogoVar_ID", link: "tgv_link" },
-    { id: "genotype_count_alt_alt", label: "Alt/Alt count" },
-    { id: "genotype_count_alt_ref", label: "Ref/Alt count" },
+    { id: "genotype_count_alt_alt", label: "Alt/Alt count", link: "genotype_count_alt_alt_link" },
+    { id: "genotype_count_alt_ref", label: "Ref/Alt count", link: "genotype_count_alt_ref_link" },
     { id: "mgend_id", label: "MGeND ID", link: "mgend_url" }
   ]
 };
@@ -72,7 +72,17 @@ async function fetchVariants(nandoId, target) {
     throw new Error(`${target} response was not an array`);
   }
 
-  return data;
+  // Support the deployed API until it includes the count-link fields.
+  return data.map(row => {
+    const frequencyLink = /^tgv\d+$/.test(row.tgv_id || "")
+      ? `https://grch38.togovar.org/variant/${row.tgv_id}#frequency`
+      : "";
+    return {
+      ...row,
+      genotype_count_alt_alt_link: row.genotype_count_alt_alt_link || frequencyLink,
+      genotype_count_alt_ref_link: row.genotype_count_alt_ref_link || frequencyLink
+    };
+  });
 }
 
 function setStatus(message, isError = false) {

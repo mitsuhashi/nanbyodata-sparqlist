@@ -1,0 +1,734 @@
+[
+  {
+    "name": "1200012 clinvar no_data tgv15859684",
+    "target": "clinvar",
+    "binding": {
+      "tgv_id": {
+        "type": "literal",
+        "value": "tgv15859684"
+      },
+      "variant": {
+        "type": "uri",
+        "value": "http://identifiers.org/hco/4/GRCh38#3208870-G-A"
+      },
+      "title": {
+        "type": "literal",
+        "value": "NM_001388492.1(HTT):c.6250G>A (p.Gly2084Arg)"
+      },
+      "condition": {
+        "type": "literal",
+        "value": "Huntington disease"
+      },
+      "clinvar": {
+        "type": "uri",
+        "value": "http://ncbi.nlm.nih.gov/clinvar/variation/1405485"
+      },
+      "vcv": {
+        "type": "literal",
+        "value": "VCV001405485"
+      },
+      "type": {
+        "type": "uri",
+        "value": "http://genome-variation.org/resource#SNV"
+      },
+      "med_id": {
+        "type": "uri",
+        "value": "http://ncbi.nlm.nih.gov/medgen/C0020179"
+      },
+      "interpretation": {
+        "type": "literal",
+        "value": "Uncertain significance"
+      }
+    },
+    "position": "4:3208870",
+    "candidate": {
+      "id": "tgv15859684",
+      "chromosome": "4",
+      "position": 3208870,
+      "reference": "G",
+      "alternate": "A",
+      "frequencies": [
+        {
+          "ac": 1,
+          "af": 9.000000318337698e-06,
+          "an": 108604,
+          "filter": [
+            "PASS"
+          ],
+          "quality": 797.2899780273438,
+          "source": "tommo"
+        },
+        {
+          "ac": 19,
+          "af": 1.2999100363231264e-05,
+          "an": 1461642,
+          "filter": [
+            "PASS"
+          ],
+          "source": "gnomad_exomes"
+        }
+      ]
+    },
+    "expected": {
+      "genotype_count_alt_alt": "No Data",
+      "genotype_count_alt_ref": "No Data"
+    }
+  },
+  {
+    "name": "1200012 clinvar positive tgv15860454",
+    "target": "clinvar",
+    "binding": {
+      "tgv_id": {
+        "type": "literal",
+        "value": "tgv15860454"
+      },
+      "variant": {
+        "type": "uri",
+        "value": "http://identifiers.org/hco/4/GRCh38#3224141-G-A"
+      },
+      "title": {
+        "type": "literal",
+        "value": "NM_001388492.1(HTT):c.7765+10G>A"
+      },
+      "condition": {
+        "type": "literal",
+        "value": "Huntington disease"
+      },
+      "clinvar": {
+        "type": "uri",
+        "value": "http://ncbi.nlm.nih.gov/clinvar/variation/1599166"
+      },
+      "vcv": {
+        "type": "literal",
+        "value": "VCV001599166"
+      },
+      "type": {
+        "type": "uri",
+        "value": "http://genome-variation.org/resource#SNV"
+      },
+      "med_id": {
+        "type": "uri",
+        "value": "http://ncbi.nlm.nih.gov/medgen/C0020179"
+      },
+      "interpretation": {
+        "type": "literal",
+        "value": "Likely benign"
+      }
+    },
+    "position": "4:3224141",
+    "candidate": {
+      "id": "tgv15860454",
+      "chromosome": "4",
+      "position": 3224141,
+      "reference": "G",
+      "alternate": "A",
+      "frequencies": [
+        {
+          "ac": 5735,
+          "af": 0.0039237798191607,
+          "an": 1461602,
+          "filter": [
+            "PASS"
+          ],
+          "source": "gnomad_exomes"
+        },
+        {
+          "ac": 4759,
+          "af": 0.03125569969415665,
+          "an": 152260,
+          "filter": [
+            "PASS"
+          ],
+          "source": "gnomad_genomes"
+        },
+        {
+          "aac": 12,
+          "ac": 178,
+          "af": 0.007561599835753441,
+          "an": 23540,
+          "filter": [
+            "PASS"
+          ],
+          "quality": 82250.1015625,
+          "source": "ncbn"
+        }
+      ]
+    },
+    "expected": {
+      "genotype_count_alt_alt": 12,
+      "genotype_count_alt_ref": "No Data"
+    }
+  },
+  {
+    "name": "1200012 clinvar zero tgv324309720",
+    "target": "clinvar",
+    "binding": {
+      "tgv_id": {
+        "type": "literal",
+        "value": "tgv324309720"
+      },
+      "variant": {
+        "type": "uri",
+        "value": "http://identifiers.org/hco/4/GRCh38#3180540-C-G"
+      },
+      "title": {
+        "type": "literal",
+        "value": "NM_001388492.1(HTT):c.4638C>G (p.Val1546=)"
+      },
+      "condition": {
+        "type": "literal",
+        "value": "Huntington disease"
+      },
+      "clinvar": {
+        "type": "uri",
+        "value": "http://ncbi.nlm.nih.gov/clinvar/variation/1671702"
+      },
+      "vcv": {
+        "type": "literal",
+        "value": "VCV001671702"
+      },
+      "type": {
+        "type": "uri",
+        "value": "http://genome-variation.org/resource#SNV"
+      },
+      "med_id": {
+        "type": "uri",
+        "value": "http://ncbi.nlm.nih.gov/medgen/C0020179"
+      },
+      "interpretation": {
+        "type": "literal",
+        "value": "Likely benign"
+      }
+    },
+    "position": "4:3180540",
+    "candidate": {
+      "id": "tgv324309720",
+      "chromosome": "4",
+      "position": 3180540,
+      "reference": "C",
+      "alternate": "G",
+      "frequencies": [
+        {
+          "ac": 261,
+          "af": 0.00017879500228445977,
+          "an": 1459776,
+          "filter": [
+            "PASS"
+          ],
+          "source": "gnomad_exomes"
+        },
+        {
+          "ac": 275,
+          "af": 0.0018086900236085057,
+          "an": 152044,
+          "filter": [
+            "PASS"
+          ],
+          "source": "gnomad_genomes"
+        },
+        {
+          "aac": 0,
+          "ac": 10,
+          "af": 0.00042495300294831395,
+          "an": 23532,
+          "filter": [
+            "PASS"
+          ],
+          "quality": 4851.27001953125,
+          "source": "ncbn"
+        }
+      ]
+    },
+    "expected": {
+      "genotype_count_alt_alt": 0,
+      "genotype_count_alt_ref": "No Data"
+    }
+  },
+  {
+    "name": "1200712 mgend no_data tgv417504260",
+    "target": "mgend",
+    "binding": {
+      "dbxref": {
+        "type": "literal",
+        "value": "OMIMPS:301050"
+      },
+      "omimps": {
+        "type": "literal",
+        "value": "https://omim.org/phenotypicSeries/PS301050"
+      },
+      "mondo": {
+        "type": "uri",
+        "value": "http://purl.obolibrary.org/obo/MONDO_0018965"
+      },
+      "mondolabel": {
+        "type": "literal",
+        "value": "Alport syndrome"
+      },
+      "significance": {
+        "type": "literal",
+        "value": "Pathogenic"
+      },
+      "type": {
+        "type": "literal",
+        "value": "Variant"
+      },
+      "variantID": {
+        "type": "uri",
+        "value": "http://med2rdf.org/mgend/variant/GRCh38_chr2_227263845_227263845_C_T"
+      },
+      "hgvs": {
+        "type": "literal",
+        "value": "ENST00000396578.8:c.1216C>T"
+      },
+      "vtype": {
+        "type": "uri",
+        "value": "http://genome-variation.org/SNV"
+      },
+      "position": {
+        "type": "typed-literal",
+        "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+        "value": "227263845"
+      },
+      "ch": {
+        "type": "uri",
+        "value": "http://identifiers.org/hco/2/GRCh38"
+      },
+      "mgendogeneID": {
+        "type": "uri",
+        "value": "http://med2rdf.org/mgend/gene/COL4A3"
+      },
+      "genelabel": {
+        "type": "literal",
+        "value": "COL4A3"
+      },
+      "geneXref": {
+        "type": "uri",
+        "value": "http://identifiers.org/hgnc:2204"
+      }
+    },
+    "position": "2:227263845",
+    "candidate": {
+      "id": "tgv417504260",
+      "chromosome": "2",
+      "position": 227263845,
+      "reference": "C",
+      "alternate": "T",
+      "frequencies": [
+        {
+          "ac": 11,
+          "af": 7.5249499786878005e-06,
+          "an": 1461804,
+          "filter": [
+            "PASS"
+          ],
+          "source": "gnomad_exomes"
+        },
+        {
+          "ac": 7,
+          "af": 4.599630119628273e-05,
+          "an": 152186,
+          "filter": [
+            "PASS"
+          ],
+          "source": "gnomad_genomes"
+        }
+      ]
+    },
+    "expected": {
+      "genotype_count_alt_alt": "No Data",
+      "genotype_count_alt_ref": "No Data"
+    }
+  },
+  {
+    "name": "1200712 mgend positive tgv66819977",
+    "target": "mgend",
+    "binding": {
+      "dbxref": {
+        "type": "literal",
+        "value": "OMIMPS:301050"
+      },
+      "omimps": {
+        "type": "literal",
+        "value": "https://omim.org/phenotypicSeries/PS301050"
+      },
+      "mondo": {
+        "type": "uri",
+        "value": "http://purl.obolibrary.org/obo/MONDO_0018965"
+      },
+      "mondolabel": {
+        "type": "literal",
+        "value": "Alport syndrome"
+      },
+      "significance": {
+        "type": "literal",
+        "value": "Pathogenic"
+      },
+      "type": {
+        "type": "literal",
+        "value": "Variant"
+      },
+      "variantID": {
+        "type": "uri",
+        "value": "http://med2rdf.org/mgend/variant/GRCh38_chrX_108622766_108622766_G_T"
+      },
+      "hgvs": {
+        "type": "literal",
+        "value": "ENST00000328300.11:c.2858G>T"
+      },
+      "vtype": {
+        "type": "uri",
+        "value": "http://genome-variation.org/SNV"
+      },
+      "position": {
+        "type": "typed-literal",
+        "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+        "value": "108622766"
+      },
+      "ch": {
+        "type": "uri",
+        "value": "http://identifiers.org/hco/X/GRCh38"
+      },
+      "mgendogeneID": {
+        "type": "uri",
+        "value": "http://med2rdf.org/mgend/gene/COL4A5"
+      },
+      "genelabel": {
+        "type": "literal",
+        "value": "COL4A5"
+      },
+      "geneXref": {
+        "type": "uri",
+        "value": "http://identifiers.org/hgnc:2207"
+      }
+    },
+    "position": "X:108622766",
+    "candidate": {
+      "id": "tgv66819977",
+      "chromosome": "X",
+      "position": 108622766,
+      "reference": "G",
+      "alternate": "T",
+      "frequencies": [
+        {
+          "aac": 1206,
+          "ac": 4438,
+          "af": 0.01218630000948906,
+          "an": 364180,
+          "arc": 2026,
+          "filter": [
+            "PASS"
+          ],
+          "rrc": 178858,
+          "source": "jga_snp"
+        },
+        {
+          "ac": 1013,
+          "af": 0.011212999932467937,
+          "an": 90341,
+          "filter": [
+            "PASS"
+          ],
+          "quality": 549416,
+          "source": "tommo"
+        },
+        {
+          "ac": 1146,
+          "af": 0.0010447100503370166,
+          "an": 1096952,
+          "filter": [
+            "PASS"
+          ],
+          "source": "gnomad_exomes"
+        },
+        {
+          "ac": 178,
+          "af": 0.0015824999427422881,
+          "an": 112480,
+          "filter": [
+            "PASS"
+          ],
+          "source": "gnomad_genomes"
+        },
+        {
+          "ac": 114,
+          "af": 0.013000000268220901,
+          "an": 8727,
+          "filter": [
+            "PASS"
+          ],
+          "quality": 57751.69921875,
+          "source": "gem_j_wga"
+        },
+        {
+          "aac": 4,
+          "ac": 207,
+          "af": 0.011661999858915806,
+          "an": 17750,
+          "filter": [
+            "PASS"
+          ],
+          "hac": 69,
+          "quality": 111551,
+          "source": "ncbn"
+        },
+        {
+          "aac": 0,
+          "ac": 1,
+          "af": 0.032258063554763794,
+          "an": 31,
+          "aoc": 0,
+          "arc": 0,
+          "filter": [
+            "PASS"
+          ],
+          "hac": 1,
+          "hoc": 0,
+          "ooc": 0,
+          "roc": 0,
+          "rrc": 10,
+          "source": "jga_wgs"
+        }
+      ]
+    },
+    "expected": {
+      "genotype_count_alt_alt": 1210,
+      "genotype_count_alt_ref": 2026
+    }
+  },
+  {
+    "name": "1200157 clinvar no_data tgv417554894",
+    "target": "clinvar",
+    "binding": {
+      "tgv_id": {
+        "type": "literal",
+        "value": "tgv417554894"
+      },
+      "variant": {
+        "type": "uri",
+        "value": "http://identifiers.org/hco/X/GRCh38#101398828-A-G"
+      },
+      "title": {
+        "type": "literal",
+        "value": "NM_000169.3(GLA):c.758T>C (p.Ile253Thr)"
+      },
+      "condition": {
+        "type": "literal",
+        "value": "Fabry disease"
+      },
+      "clinvar": {
+        "type": "uri",
+        "value": "http://ncbi.nlm.nih.gov/clinvar/variation/180021"
+      },
+      "vcv": {
+        "type": "literal",
+        "value": "VCV000180021"
+      },
+      "type": {
+        "type": "uri",
+        "value": "http://genome-variation.org/resource#SNV"
+      },
+      "med_id": {
+        "type": "uri",
+        "value": "http://ncbi.nlm.nih.gov/medgen/C0002986"
+      },
+      "interpretation": {
+        "type": "literal",
+        "value": "Likely pathogenic"
+      }
+    },
+    "position": "X:101398828",
+    "candidate": {
+      "id": "tgv417554894",
+      "chromosome": "X",
+      "position": 101398828,
+      "reference": "A",
+      "alternate": "G"
+    },
+    "expected": {
+      "genotype_count_alt_alt": "No Data",
+      "genotype_count_alt_ref": "No Data"
+    }
+  },
+  {
+    "name": "1200157 clinvar zero tgv415862128",
+    "target": "clinvar",
+    "binding": {
+      "tgv_id": {
+        "type": "literal",
+        "value": "tgv415862128"
+      },
+      "variant": {
+        "type": "uri",
+        "value": "http://identifiers.org/hco/X/GRCh38#101403941-C-T"
+      },
+      "title": {
+        "type": "literal",
+        "value": "NM_000169.3(GLA):c.239G>A (p.Gly80Asp)"
+      },
+      "condition": {
+        "type": "literal",
+        "value": "Fabry disease"
+      },
+      "clinvar": {
+        "type": "uri",
+        "value": "http://ncbi.nlm.nih.gov/clinvar/variation/217380"
+      },
+      "vcv": {
+        "type": "literal",
+        "value": "VCV000217380"
+      },
+      "type": {
+        "type": "uri",
+        "value": "http://genome-variation.org/resource#SNV"
+      },
+      "med_id": {
+        "type": "uri",
+        "value": "http://ncbi.nlm.nih.gov/medgen/C0002986"
+      },
+      "interpretation": {
+        "type": "literal",
+        "value": "Conflicting interpretations of pathogenicity"
+      }
+    },
+    "position": "X:101403941",
+    "candidate": {
+      "id": "tgv415862128",
+      "chromosome": "X",
+      "position": 101403941,
+      "reference": "C",
+      "alternate": "T",
+      "frequencies": [
+        {
+          "ac": 2,
+          "af": 1.8240699546367978e-06,
+          "an": 1096452,
+          "filter": [
+            "PASS"
+          ],
+          "source": "gnomad_exomes"
+        },
+        {
+          "ac": 1,
+          "af": 8.882570000423584e-06,
+          "an": 112580,
+          "filter": [
+            "PASS"
+          ],
+          "source": "gnomad_genomes"
+        },
+        {
+          "aac": 0,
+          "ac": 1,
+          "af": 5.633489854517393e-05,
+          "an": 17751,
+          "filter": [
+            "PASS"
+          ],
+          "hac": 0,
+          "quality": 149.52000427246094,
+          "source": "ncbn"
+        }
+      ]
+    },
+    "expected": {
+      "genotype_count_alt_alt": 0,
+      "genotype_count_alt_ref": "No Data"
+    }
+  },
+  {
+    "name": "1200157 clinvar positive tgv238792237",
+    "target": "clinvar",
+    "binding": {
+      "tgv_id": {
+        "type": "literal",
+        "value": "tgv238792237"
+      },
+      "variant": {
+        "type": "uri",
+        "value": "http://identifiers.org/hco/X/GRCh38#101408008-T-C"
+      },
+      "title": {
+        "type": "literal",
+        "value": "NM_000169.2(GLA):c.-105A>G"
+      },
+      "condition": {
+        "type": "literal",
+        "value": "Fabry disease"
+      },
+      "clinvar": {
+        "type": "uri",
+        "value": "http://ncbi.nlm.nih.gov/clinvar/variation/222092"
+      },
+      "vcv": {
+        "type": "literal",
+        "value": "VCV000222092"
+      },
+      "type": {
+        "type": "uri",
+        "value": "http://genome-variation.org/resource#SNV"
+      },
+      "med_id": {
+        "type": "uri",
+        "value": "http://ncbi.nlm.nih.gov/medgen/C0002986"
+      },
+      "interpretation": {
+        "type": "literal",
+        "value": "Benign"
+      }
+    },
+    "position": "X:101408008",
+    "candidate": {
+      "id": "tgv238792237",
+      "chromosome": "X",
+      "position": 101408008,
+      "reference": "T",
+      "alternate": "C",
+      "frequencies": [
+        {
+          "ac": 4,
+          "af": 4.400000034365803e-05,
+          "an": 90341,
+          "filter": [
+            "PASS"
+          ],
+          "quality": 2031.0699462890625,
+          "source": "tommo"
+        },
+        {
+          "ac": 2826,
+          "af": 0.0047905901446938515,
+          "an": 589907,
+          "filter": [
+            "PASS"
+          ],
+          "source": "gnomad_exomes"
+        },
+        {
+          "ac": 4143,
+          "af": 0.037017498165369034,
+          "an": 111920,
+          "filter": [
+            "PASS"
+          ],
+          "source": "gnomad_genomes"
+        },
+        {
+          "aac": 12,
+          "ac": 142,
+          "af": 0.008002250455319881,
+          "an": 17745,
+          "filter": [
+            "PASS"
+          ],
+          "hac": 56,
+          "quality": 78286.3984375,
+          "source": "ncbn"
+        }
+      ]
+    },
+    "expected": {
+      "genotype_count_alt_alt": 12,
+      "genotype_count_alt_ref": "No Data"
+    }
+  }
+]

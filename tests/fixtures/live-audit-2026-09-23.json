@@ -1,0 +1,380 @@
+[
+  {
+    "input": {
+      "nando_id": "1200012",
+      "target": "clinvar"
+    },
+    "statistics": {
+      "rows": 9,
+      "queried_locations": 8,
+      "matched_rows": 3,
+      "genomic_identity_checked_rows": 3,
+      "no_data_rows": 7,
+      "unmatched_rows": 6,
+      "positive_rows": 1,
+      "zero_rows": 1,
+      "distinct_matched_tgv_ids": 3
+    },
+    "examples": {
+      "no_data": {
+        "tgv_id": "tgv15859684",
+        "position": "4:3208870",
+        "counts": {
+          "genotype_count_alt_alt": "No Data",
+          "genotype_count_alt_ref": "No Data"
+        },
+        "frequencies": [
+          {
+            "ac": 1,
+            "af": 9.000000318337698e-06,
+            "an": 108604,
+            "filter": [
+              "PASS"
+            ],
+            "quality": 797.2899780273438,
+            "source": "tommo"
+          },
+          {
+            "ac": 19,
+            "af": 1.2999100363231264e-05,
+            "an": 1461642,
+            "filter": [
+              "PASS"
+            ],
+            "source": "gnomad_exomes"
+          }
+        ]
+      },
+      "positive": {
+        "tgv_id": "tgv15860454",
+        "position": "4:3224141",
+        "counts": {
+          "genotype_count_alt_alt": 12,
+          "genotype_count_alt_ref": "No Data"
+        },
+        "frequencies": [
+          {
+            "ac": 5735,
+            "af": 0.0039237798191607,
+            "an": 1461602,
+            "filter": [
+              "PASS"
+            ],
+            "source": "gnomad_exomes"
+          },
+          {
+            "ac": 4759,
+            "af": 0.03125569969415665,
+            "an": 152260,
+            "filter": [
+              "PASS"
+            ],
+            "source": "gnomad_genomes"
+          },
+          {
+            "aac": 12,
+            "ac": 178,
+            "af": 0.007561599835753441,
+            "an": 23540,
+            "filter": [
+              "PASS"
+            ],
+            "quality": 82250.1015625,
+            "source": "ncbn"
+          }
+        ]
+      },
+      "zero": {
+        "tgv_id": "tgv324309720",
+        "position": "4:3180540",
+        "counts": {
+          "genotype_count_alt_alt": 0,
+          "genotype_count_alt_ref": "No Data"
+        },
+        "frequencies": [
+          {
+            "ac": 261,
+            "af": 0.00017879500228445977,
+            "an": 1459776,
+            "filter": [
+              "PASS"
+            ],
+            "source": "gnomad_exomes"
+          },
+          {
+            "ac": 275,
+            "af": 0.0018086900236085057,
+            "an": 152044,
+            "filter": [
+              "PASS"
+            ],
+            "source": "gnomad_genomes"
+          },
+          {
+            "aac": 0,
+            "ac": 10,
+            "af": 0.00042495300294831395,
+            "an": 23532,
+            "filter": [
+              "PASS"
+            ],
+            "quality": 4851.27001953125,
+            "source": "ncbn"
+          }
+        ]
+      }
+    }
+  },
+  {
+    "input": {
+      "nando_id": "1200712",
+      "target": "mgend"
+    },
+    "statistics": {
+      "rows": 288,
+      "queried_locations": 135,
+      "matched_rows": 288,
+      "genomic_identity_checked_rows": 288,
+      "no_data_rows": 286,
+      "positive_rows": 2,
+      "distinct_matched_tgv_ids": 144
+    },
+    "examples": {
+      "no_data": {
+        "tgv_id": "tgv417504260",
+        "position": "2:227263845",
+        "counts": {
+          "genotype_count_alt_alt": "No Data",
+          "genotype_count_alt_ref": "No Data"
+        },
+        "frequencies": [
+          {
+            "ac": 11,
+            "af": 7.5249499786878005e-06,
+            "an": 1461804,
+            "filter": [
+              "PASS"
+            ],
+            "source": "gnomad_exomes"
+          },
+          {
+            "ac": 7,
+            "af": 4.599630119628273e-05,
+            "an": 152186,
+            "filter": [
+              "PASS"
+            ],
+            "source": "gnomad_genomes"
+          }
+        ]
+      },
+      "positive": {
+        "tgv_id": "tgv66819977",
+        "position": "X:108622766",
+        "counts": {
+          "genotype_count_alt_alt": 1210,
+          "genotype_count_alt_ref": 2026
+        },
+        "frequencies": [
+          {
+            "aac": 1206,
+            "ac": 4438,
+            "af": 0.01218630000948906,
+            "an": 364180,
+            "arc": 2026,
+            "filter": [
+              "PASS"
+            ],
+            "rrc": 178858,
+            "source": "jga_snp"
+          },
+          {
+            "ac": 1013,
+            "af": 0.011212999932467937,
+            "an": 90341,
+            "filter": [
+              "PASS"
+            ],
+            "quality": 549416,
+            "source": "tommo"
+          },
+          {
+            "ac": 1146,
+            "af": 0.0010447100503370166,
+            "an": 1096952,
+            "filter": [
+              "PASS"
+            ],
+            "source": "gnomad_exomes"
+          },
+          {
+            "ac": 178,
+            "af": 0.0015824999427422881,
+            "an": 112480,
+            "filter": [
+              "PASS"
+            ],
+            "source": "gnomad_genomes"
+          },
+          {
+            "ac": 114,
+            "af": 0.013000000268220901,
+            "an": 8727,
+            "filter": [
+              "PASS"
+            ],
+            "quality": 57751.69921875,
+            "source": "gem_j_wga"
+          },
+          {
+            "aac": 4,
+            "ac": 207,
+            "af": 0.011661999858915806,
+            "an": 17750,
+            "filter": [
+              "PASS"
+            ],
+            "hac": 69,
+            "quality": 111551,
+            "source": "ncbn"
+          },
+          {
+            "aac": 0,
+            "ac": 1,
+            "af": 0.032258063554763794,
+            "an": 31,
+            "aoc": 0,
+            "arc": 0,
+            "filter": [
+              "PASS"
+            ],
+            "hac": 1,
+            "hoc": 0,
+            "ooc": 0,
+            "roc": 0,
+            "rrc": 10,
+            "source": "jga_wgs"
+          }
+        ]
+      }
+    }
+  },
+  {
+    "input": {
+      "nando_id": "1200157",
+      "target": "clinvar"
+    },
+    "statistics": {
+      "rows": 847,
+      "queried_locations": 686,
+      "matched_rows": 259,
+      "genomic_identity_checked_rows": 259,
+      "no_data_rows": 812,
+      "unmatched_rows": 588,
+      "zero_rows": 27,
+      "positive_rows": 8,
+      "distinct_matched_tgv_ids": 258
+    },
+    "examples": {
+      "no_data": {
+        "tgv_id": "tgv417554894",
+        "position": "X:101398828",
+        "counts": {
+          "genotype_count_alt_alt": "No Data",
+          "genotype_count_alt_ref": "No Data"
+        },
+        "frequencies": []
+      },
+      "zero": {
+        "tgv_id": "tgv415862128",
+        "position": "X:101403941",
+        "counts": {
+          "genotype_count_alt_alt": 0,
+          "genotype_count_alt_ref": "No Data"
+        },
+        "frequencies": [
+          {
+            "ac": 2,
+            "af": 1.8240699546367978e-06,
+            "an": 1096452,
+            "filter": [
+              "PASS"
+            ],
+            "source": "gnomad_exomes"
+          },
+          {
+            "ac": 1,
+            "af": 8.882570000423584e-06,
+            "an": 112580,
+            "filter": [
+              "PASS"
+            ],
+            "source": "gnomad_genomes"
+          },
+          {
+            "aac": 0,
+            "ac": 1,
+            "af": 5.633489854517393e-05,
+            "an": 17751,
+            "filter": [
+              "PASS"
+            ],
+            "hac": 0,
+            "quality": 149.52000427246094,
+            "source": "ncbn"
+          }
+        ]
+      },
+      "positive": {
+        "tgv_id": "tgv238792237",
+        "position": "X:101408008",
+        "counts": {
+          "genotype_count_alt_alt": 12,
+          "genotype_count_alt_ref": "No Data"
+        },
+        "frequencies": [
+          {
+            "ac": 4,
+            "af": 4.400000034365803e-05,
+            "an": 90341,
+            "filter": [
+              "PASS"
+            ],
+            "quality": 2031.0699462890625,
+            "source": "tommo"
+          },
+          {
+            "ac": 2826,
+            "af": 0.0047905901446938515,
+            "an": 589907,
+            "filter": [
+              "PASS"
+            ],
+            "source": "gnomad_exomes"
+          },
+          {
+            "ac": 4143,
+            "af": 0.037017498165369034,
+            "an": 111920,
+            "filter": [
+              "PASS"
+            ],
+            "source": "gnomad_genomes"
+          },
+          {
+            "aac": 12,
+            "ac": 142,
+            "af": 0.008002250455319881,
+            "an": 17745,
+            "filter": [
+              "PASS"
+            ],
+            "hac": 56,
+            "quality": 78286.3984375,
+            "source": "ncbn"
+          }
+        ]
+      }
+    }
+  }
+]

@@ -9,8 +9,47 @@
   * default: clinvar
   * examples: clinvar mgend
 
+## `input`
+
+NANDO ID と対象を検証・正規化します。`NANDO:1200216` / `NANDO_1200216` と大文字の対象名も受け付けます。従来の `medgen` は `mgend` の別名として扱います。
+
+```javascript
+({nando_id, target}) => {
+  const id = String(nando_id || "1200216").trim().replace(/^NANDO[:_]/i, "");
+  let database = String(target || "clinvar").trim().toLowerCase();
+  if (database === "medgen") database = "mgend";
+  if (!/^\d{7}$/.test(id)) throw new Error("nando_id must be a 7-digit NANDO ID");
+  if (!["clinvar", "mgend"].includes(database)) {
+    throw new Error("target must be clinvar or mgend");
+  }
+  return {nando_id: id, target: database};
+}
+```
+
 ## Endpoint
 https://nanbyodata.jp/sparql
+
+## `nando2mondo2omim`
+
+先に対象疾患のMONDOとOMIM Phenotypic Seriesを確定します。大きなMGeNDグラフとの結合前に検索対象を絞ります。
+
+```sparql
+PREFIX nando: <http://nanbyodata.jp/ontology/NANDO_>
+PREFIX skos: <http://www.w3.org/2004/02/skos/core#>
+PREFIX oboInOwl: <http://www.geneontology.org/formats/oboInOwl#>
+SELECT DISTINCT ?mondo ?omimuri
+WHERE {
+  FILTER ("{{input.target}}" = "mgend")
+  GRAPH <https://nanbyodata.jp/rdf/ontology/nando> {
+    nando:{{input.nando_id}} skos:exactMatch | skos:closeMatch ?mondo .
+  }
+  GRAPH <https://nanbyodata.jp/rdf/ontology/mondo> {
+    ?mondo oboInOwl:hasDbXref ?xref .
+    FILTER STRSTARTS(STR(?xref), "OMIMPS:")
+    BIND(IRI(REPLACE(STR(?xref), "OMIMPS:", "https://omim.org/phenotypicSeries/PS")) AS ?omimuri)
+  }
+}
+```
 
 ## `nando2mondo2mgend`
 
@@ -31,15 +70,13 @@ PREFIX mgendo: <http://med2rdf.org/mgend/ontology#>
 PREFIX m2r: <http://med2rdf.org/ontology/med2rdf#>
 
 SELECT DISTINCT ?dbxref ?omimps ?mondo ?mondolabel ?significance ?type ?variantID ?hgvs ?vtype ?position ?ch ?mgendogeneID ?genelabel ?geneXref
-FROM <https://nanbyodata.jp/rdf/mgend>
-FROM <https://nanbyodata.jp/rdf/ontology/mondo>
-FROM <https://nanbyodata.jp/rdf/ontology/nando>
 WHERE {
-  FILTER ("{{target}}" = "mgend")
-  GRAPH <https://nanbyodata.jp/rdf/ontology/nando> {
-    OPTIONAL {
-      nando:{{nando_id}} skos:exactMatch | skos:closeMatch ?mondo .
-    }
+  {{#if nando2mondo2omim.results.bindings.length}}
+  FILTER ("{{input.target}}" = "mgend")
+  VALUES (?mondo ?omimuri) {
+    {{#each nando2mondo2omim.results.bindings}}
+      (<{{mondo.value}}> <{{omimuri.value}}>)
+    {{/each}}
   }
   GRAPH <https://nanbyodata.jp/rdf/ontology/mondo> {
     ?mondo rdfs:label ?mondolabel;
@@ -47,8 +84,8 @@ WHERE {
     FILTER (lang(?mondolabel) = "")
     FILTER contains(?dbxref,'OMIMPS')
     BIND(REPLACE(?dbxref,'OMIMPS:','https://omim.org/phenotypicSeries/PS') AS ?omimps)
-    BIND(IRI(?omimps)AS ?omimuri)
   }
+  FILTER (IRI(?omimps) = ?omimuri)
    GRAPH <https://nanbyodata.jp/rdf/mgend> {
     ?mgendcase rdfs:seeAlso ?omimuri.
     ?mgendcase mgendo:case_significance ?significance;
@@ -64,6 +101,9 @@ WHERE {
     ?mgendogeneID rdfs:label ?genelabel;
                   rdfs:seeAlso ?geneXref.
   }
+  {{else}}
+  FILTER (false)
+  {{/if}}
 }
 ```
 
@@ -81,9 +121,9 @@ PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
 
 SELECT DISTINCT ?mondo ?medgen_id ?medgen_cid
 WHERE {
-  FILTER ("{{target}}" = "clinvar")
+  FILTER ("{{input.target}}" = "clinvar")
   GRAPH <https://nanbyodata.jp/rdf/ontology/nando> {
-    nando:{{nando_id}} skos:exactMatch | skos:closeMatch ?mondo .
+    nando:{{input.nando_id}} skos:exactMatch | skos:closeMatch ?mondo .
   }
   GRAPH <https://nanbyodata.jp/rdf/medgen> {
     ?medgen_uri
@@ -104,7 +144,7 @@ WHERE {
 
 ```javascript
 ({nando2mondo2medgen}) => {
-  return nando2mondo2medgen.results.bindings.map(b => b.medgen_cid.value);
+  return [...new Set(nando2mondo2medgen.results.bindings.map(b => b.medgen_cid.value))];
 }
 ```
 
@@ -124,7 +164,7 @@ PREFIX rdfs:   <http://www.w3.org/2000/01/rdf-schema#>
 PREFIX sio:    <http://semanticscience.org/resource/>
 PREFIX tgvo:   <http://togovar.biosciencedbc.jp/vocabulary/>
 
-SELECT DISTINCT ?tgv_id ?rs_id ?variant ?title ?condition ?clinvar ?vcv ?type ?med_id ?interpretation
+SELECT DISTINCT ?tgv_id ?variant ?title ?condition ?clinvar ?vcv ?type ?med_id ?interpretation
 WHERE {
   VALUES ?med_id { {{#each medgen}} <{{this}}> {{/each}} }
 
@@ -135,7 +175,6 @@ WHERE {
       rdfs:label ?condition .
 
     ?_rcv cvo:rcv_classifications/cvo:germline_classification/cvo:description/cvo:description ?interpretation ;
-      cvo:rcv_classifications/cvo:germline_classification/cvo:description/cvo:date_last_evaluated ?last_evaluated ;
       ^cvo:rcv_accession/^cvo:rcv_list/^cvo:classified_record ?clinvar .
 
     ?clinvar a cvo:VariationArchiveType ;
@@ -167,11 +206,12 @@ MGeND 由来のバリアント位置を使って TogoVar REST API を呼びま�
 async ({nando2mondo2mgend}) => {
   const variants = nando2mondo2mgend.results.bindings;
   const locations = [...new Map(variants.map(d => {
+    if (!/\/GRCh38$/.test(d.ch.value)) return null;
     const chromosomeParts = d.ch.value.split('/');
     const chromosome = chromosomeParts[chromosomeParts.length - 2];
     const position = Number(d.position.value);
     return [`${chromosome}:${position}`, {chromosome, position}];
-  })).values()];
+  }).filter(Boolean)).values()];
 
   const responses = await Promise.all(locations.map(async location => {
     const response = await fetch('https://grch38.togovar.org/api/search/variant?stat=0', {
@@ -207,7 +247,7 @@ async ({medgen2clinvar2togovar}) => {
   const locations = [...new Map(medgen2clinvar2togovar.results.bindings
     .map(d => {
       const positionMatch = d.variant && d.variant.value
-        ? d.variant.value.match(/http:\/\/identifiers.org\/hco\/(.+)\/GRCh3[78]#(\d+)/)
+        ? d.variant.value.match(/http:\/\/identifiers.org\/hco\/(.+)\/GRCh38#(\d+)/)
         : null;
       if (!positionMatch) {
         return null;
@@ -258,15 +298,28 @@ ClinVar SPARQL の結果と TogoVar REST API の結果を統合し、最終的�
 
   return medgen2clinvar2togovar.results.bindings.map(x => {
     const positionMatch = x.variant && x.variant.value
-      ? x.variant.value.match(/http:\/\/identifiers.org\/hco\/(.+)\/GRCh3[78]#(\d+)/)
+      ? x.variant.value.match(/http:\/\/identifiers.org\/hco\/(.+)\/GRCh38#(\d+)/)
       : null;
     const position = positionMatch ? positionMatch[1] + ":" + positionMatch[2] : "";
     const tgv_id = x.tgv_id && x.tgv_id.value ? x.tgv_id.value : "";
     const medgenUri = x.med_id && x.med_id.value ? x.med_id.value : "";
     const mondo = medgenUri && medgen2mondo[medgenUri] ? medgen2mondo[medgenUri] : "";
     const variantsAtLocation = clinvar_togovar[position] || [];
-    const togovarVariant = variantsAtLocation.find(variant => variant.id === tgv_id)
-      || variantsAtLocation[0];
+    // IDを優先し、見つからない場合だけGRCh38のゲノム表現で完全一致を確認する。
+    // indelの正規化やREF/ALTの推測はしない。複数候補なら補完しない。
+    const genomic = x.variant?.value.match(/^https?:\/\/identifiers\.org\/hco\/([^/]+)\/GRCh38#(\d+)-([ACGT]+)-([ACGT]+)$/);
+    const idMatch = tgv_id ? variantsAtLocation.find(variant => variant.id === tgv_id) : undefined;
+    const genomicMatches = !idMatch && genomic ? variantsAtLocation.filter(variant =>
+      String(variant.chromosome) === genomic[1]
+      && Number(variant.position) === Number(genomic[2])
+      && variant.reference === genomic[3]
+      && variant.alternate === genomic[4]
+    ) : [];
+    const togovarVariant = idMatch || (genomicMatches.length === 1 ? genomicMatches[0] : undefined);
+    const frequencyId = togovarVariant?.id || tgv_id;
+    const frequencyLink = frequencyId
+      ? `https://grch38.togovar.org/variant/${frequencyId}#frequency`
+      : "";
     const frequencies = togovarVariant?.frequencies || [];
     const altAltCounts = frequencies
       .map(record => record.genotype?.alt_homo_count ?? record.aac)
@@ -292,6 +345,8 @@ ClinVar SPARQL の結果と TogoVar REST API の結果を統合し、最終的�
       mondo: mondo,
       mondo_id: mondo ? mondo.replace("http://purl.obolibrary.org/obo/MONDO_", "MONDO:") : "",
       mondo_url: mondo,
+      genotype_count_alt_alt_link: frequencyLink,
+      genotype_count_alt_ref_link: frequencyLink,
       genotype_count_alt_alt: altAltCounts.length > 0
         ? altAltCounts.reduce((sum, count) => sum + count, 0)
         : "No Data",
@@ -319,14 +374,26 @@ MGeND SPARQL の結果と TogoVar REST API の結果を統合し、最終的な 
     let urlPartsVtype = d.vtype.value.split('/'); // vtypeのURLをスラッシュで分割
     let variantType = urlPartsVtype[urlPartsVtype.length - 1]; // 最後の要素が変異タイプ
 
-    // HGVS末尾の置換表記からREF/ALTを取得し、同一座標の別ALTを除外する
-    const alleles = d.hgvs.value.match(/([ACGT]+)>([ACGT]+)$/i);
-    const reference = alleles ? alleles[1].toUpperCase() : "";
-    const alternate = alleles ? alleles[2].toUpperCase() : "";
-    const variantsAtLocation = togovar[`${chromosomeNumber}:${d.position.value}`] || [];
-    const togovarVariant = variantsAtLocation.find(variant =>
-      variant.reference === reference && variant.alternate === alternate
-    );
+    // c.HGVS は逆鎖の場合にゲノムのREF/ALTと異なる。ゲノムURIを使う。
+    const genomic = d.variantID.value.match(/\/GRCh38_chr([^_]+)_(\d+)_(\d+)_([ACGT]+)_([ACGT]+)$/i);
+    const variantsAtLocation = /\/GRCh38$/.test(d.ch.value)
+      ? togovar[`${chromosomeNumber}:${d.position.value}`] || []
+      : [];
+    const togovarVariant = variantsAtLocation.find(variant => {
+      if (String(variant.chromosome) !== chromosomeNumber || Number(variant.position) !== Number(d.position.value)) {
+        return false;
+      }
+      // 置換のみREF/ALTを直接比較する。indelは正規化が異なり得るためHGVSの完全一致を使う。
+      if (genomic && genomic[4].length === genomic[5].length) {
+        return genomic[1] === chromosomeNumber && Number(genomic[2]) === Number(variant.position)
+          && variant.reference === genomic[4].toUpperCase()
+          && variant.alternate === genomic[5].toUpperCase();
+      }
+      return (variant.transcripts || []).some(transcript => transcript.hgvs_c === d.hgvs.value);
+    });
+    const frequencyLink = togovarVariant?.id
+      ? `https://grch38.togovar.org/variant/${togovarVariant.id}#frequency`
+      : "";
     const frequencies = togovarVariant?.frequencies || [];
     const altAltCounts = frequencies
       .map(record => record.genotype?.alt_homo_count ?? record.aac)
@@ -372,6 +439,8 @@ MGeND SPARQL の結果と TogoVar REST API の結果を統合し、最終的な 
       ch: chromosomeNumber, // 修正した染色体番号
       tgv_id: togovarVariant?.id || "",
       tgv_link: togovarVariant?.id ? `https://grch38.togovar.org/variant/${togovarVariant.id}` : "",
+      genotype_count_alt_alt_link: frequencyLink,
+      genotype_count_alt_ref_link: frequencyLink,
       genotype_count_alt_alt: altAltCounts.length > 0
         ? altAltCounts.reduce((sum, count) => sum + count, 0)
         : "No Data",
@@ -395,12 +464,11 @@ MGeND SPARQL の結果と TogoVar REST API の結果を統合し、最終的な 
 
 ## `variants`
 
-`target` パラメータに応じて、ClinVar 用の結果または MGeND 用の結果を選択します。`target=mgend` または `target=medgen` の場合は MGeND、それ以外は ClinVar を返します。
+`target` パラメータに応じて、ClinVar 用の結果または MGeND 用の結果を選択します。検証・正規化済みの対象名に基づいて返します。
 
 ```javascript
-({target, clinvar_variants, mgend_variants}) => {
-  const normalizedTarget = String(target || "clinvar").toLowerCase();
-  return ["mgend", "medgen"].includes(normalizedTarget) ? mgend_variants : clinvar_variants;
+({input, clinvar_variants, mgend_variants}) => {
+  return input.target === "mgend" ? mgend_variants : clinvar_variants;
 }
 ```
 
@@ -413,11 +481,15 @@ MGeND SPARQL の結果と TogoVar REST API の結果を統合し、最終的な 
 ```
 
 ## Description
-- MGenDのデータを取るためのSPARQList
+- countは欠損を除いたデータセットの合計です。0と欠損のみの場合は0、すべて欠損または照合不可の場合は「No Data」です。0は全データセットでの不在を意味しません。
+- `genotype_count_alt_alt_link` / `genotype_count_alt_ref_link` は、TogoVar IDがある場合に、その変異の `#frequency` URLを返します。数値・0・No Dataのすべてがリンク対象です。ClinVarではREST側のIDを優先し、なければSPARQL側のIDを使います。どちらにもIDがない場合は空文字です。
+- ClinVar / MGeND の疾患関連レコードを取得します。結果は転写産物・疾患・分類ごとの行を含み、行数はユニークな変異数ではありません。
+- NANDOの直接のexactMatch / closeMatchを対象とします。子疾患は展開しません。MGeNDはMONDOのOMIM Phenotypic Series経由で、c.HGVS・位置・遺伝子情報が揃うレコードに限定されます。全関連変異を網羅する検索ではありません。
+- TogoVar REST APIとの照合はGRCh38を対象とします。一致が確認できない補完情報は空文字または「No Data」とします。
 
 ## Description
 - TogoVarの情報をVirtuosoではなくTogoVarAPIから取得するように変更 三橋 (2025/7/10)
-  - num_homozygousとnum_heterozygousはTogoVarに搭載されているデータセットで1以上の数字があれば合計を返します。欠損値が多いのであるデータセットで0であっても「No Data」とします。
+  - genotype_count_alt_alt と genotype_count_alt_ref は、TogoVarの各データセットに明示された数値を合計します。0は0として扱い、数値がない場合のみ「No Data」を返します。データセット間の重複個体は除外していないため、ユニークな人数ではありません。
 - [Distal myopathy (C0751336)](https://grch38.togovar.org/disease/C0751336) をClinVarとMGeNDの両方にある例とする。
 - MedGenのRDFの形式が変わったことによる変更 2024/12/05
 - NANDO改変に伴う変更　2024/11/22

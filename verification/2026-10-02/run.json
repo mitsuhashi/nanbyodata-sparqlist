@@ -1,0 +1,15 @@
+{
+  "started_at_utc": "2026-10-01T23:33:07.082220+00:00",
+  "command": "node --test --test-reporter=tap tests/variants.test.mjs tests/live-counts.test.mjs",
+  "exit_code": 0,
+  "node_version": "v22.19.0",
+  "base_commit": "fa07c36016906cdc50f9267255143c73384df6c2",
+  "working_tree_changes": true,
+  "sha256": {
+    "nanbyodata_get_variant_by_nando_id.md": "66861aacf9e9c5193f71d82576b2b2c5f839609a06cb125a88d2991cf7deebf7",
+    "scripts/variant-blocks.mjs": "4244cfce0737ac769c486cbc4e7f4f8c30197f430357017f0dda1fc335b69cc5",
+    "tests/variants.test.mjs": "7e120b665162776d87a1823834794a165a44ca2748689ea5ec06559a0bce73b9",
+    "tests/live-counts.test.mjs": "610e5324fa031101b26d4ab2a7397a4135dde05c1e5244f1ebb808871251ad85",
+    "tests/fixtures/live-counts-2026-09-23.json": "53ee387418ea267fcb7841350c7315bf3e04f377159ce7ef0f294069b9468f76"
+  }
+}

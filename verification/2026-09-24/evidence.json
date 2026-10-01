@@ -1,0 +1,1282 @@
+{
+  "checked_at": "2026-09-24T01:25:45.099916+00:00",
+  "git_revision": "fa07c36016906cdc50f9267255143c73384df6c2",
+  "sparqlist_sha256": "afbb79e0b0a2dd74a2783ebd3fddc011db5696ba65794368eb3233d8108ba19c",
+  "comparison": {
+    "clinvar": {
+      "public_api": "https://nanbyodata.jp/sparqlist/api/nanbyodata_get_clinvar_variant_by_nando_id?nando_id=1200216",
+      "public_rows": [
+        {
+          "tgv_id": "tgv22949086",
+          "tgv_link": "https://grch38.togovar.org/variant/tgv22949086",
+          "position": "5:139329477",
+          "title": "NM_018834.6(MATR3):c.*86_*89del",
+          "Clinvar_link": "http://ncbi.nlm.nih.gov/clinvar/variation/351146",
+          "Clinvar_id": "VCV000351146",
+          "Interpretation": "Likely benign",
+          "type": "Deletion",
+          "MedGen_id": "C0751336",
+          "MedGen_link": "http://ncbi.nlm.nih.gov/medgen/C0751336",
+          "mondo": "http://purl.obolibrary.org/obo/MONDO_0018949",
+          "mondo_id": "MONDO:0018949"
+        },
+        {
+          "tgv_id": "tgv200780918",
+          "tgv_link": "https://grch38.togovar.org/variant/tgv200780918",
+          "position": "5:139329569",
+          "title": "NM_018834.6(MATR3):c.*175AT[1]",
+          "Clinvar_link": "http://ncbi.nlm.nih.gov/clinvar/variation/351148",
+          "Clinvar_id": "VCV000351148",
+          "Interpretation": "Uncertain significance",
+          "type": "Deletion",
+          "MedGen_id": "C0751336",
+          "MedGen_link": "http://ncbi.nlm.nih.gov/medgen/C0751336",
+          "mondo": "http://purl.obolibrary.org/obo/MONDO_0018949",
+          "mondo_id": "MONDO:0018949"
+        },
+        {
+          "tgv_id": "tgv338127495",
+          "tgv_link": "https://grch38.togovar.org/variant/tgv338127495",
+          "position": "5:139331202",
+          "title": "NM_018834.6(MATR3):c.*1810_*1812del",
+          "Clinvar_link": "http://ncbi.nlm.nih.gov/clinvar/variation/351177",
+          "Clinvar_id": "VCV000351177",
+          "Interpretation": "Likely benign",
+          "type": "Deletion",
+          "MedGen_id": "C0751336",
+          "MedGen_link": "http://ncbi.nlm.nih.gov/medgen/C0751336",
+          "mondo": "http://purl.obolibrary.org/obo/MONDO_0018949",
+          "mondo_id": "MONDO:0018949"
+        },
+        {
+          "tgv_id": "tgv22947906",
+          "tgv_link": "https://grch38.togovar.org/variant/tgv22947906",
+          "position": "5:139307308",
+          "title": "NM_018834.6(MATR3):c.-103dup",
+          "Clinvar_link": "http://ncbi.nlm.nih.gov/clinvar/variation/351117",
+          "Clinvar_id": "VCV000351117",
+          "Interpretation": "Benign",
+          "type": "Insertion",
+          "MedGen_id": "C0751336",
+          "MedGen_link": "http://ncbi.nlm.nih.gov/medgen/C0751336",
+          "mondo": "http://purl.obolibrary.org/obo/MONDO_0018949",
+          "mondo_id": "MONDO:0018949"
+        },
+        {
+          "tgv_id": "",
+          "tgv_link": "",
+          "position": "5:139326289",
+          "title": "NM_018834.6(MATR3):c.2493+7_2493+9del",
+          "Clinvar_link": "http://ncbi.nlm.nih.gov/clinvar/variation/351139",
+          "Clinvar_id": "VCV000351139",
+          "Interpretation": "Uncertain significance",
+          "type": "",
+          "MedGen_id": "C0751336",
+          "MedGen_link": "http://ncbi.nlm.nih.gov/medgen/C0751336",
+          "mondo": "http://purl.obolibrary.org/obo/MONDO_0018949",
+          "mondo_id": "MONDO:0018949"
+        },
+        {
+          "tgv_id": "",
+          "tgv_link": "",
+          "position": "5:139273746",
+          "title": "NM_199189.2(MATR3):c.-784G>A",
+          "Clinvar_link": "http://ncbi.nlm.nih.gov/clinvar/variation/369449",
+          "Clinvar_id": "VCV000369449",
+          "Interpretation": "Likely benign",
+          "type": "",
+          "MedGen_id": "C0751336",
+          "MedGen_link": "http://ncbi.nlm.nih.gov/medgen/C0751336",
+          "mondo": "http://purl.obolibrary.org/obo/MONDO_0018949",
+          "mondo_id": "MONDO:0018949"
+        },
+        {
+          "tgv_id": "",
+          "tgv_link": "",
+          "position": "12:119193786",
+          "title": "NM_014365.3(HSPB8):c.520_533del (p.Tyr174fs)",
+          "Clinvar_link": "http://ncbi.nlm.nih.gov/clinvar/variation/584450",
+          "Clinvar_id": "VCV000584450",
+          "Interpretation": "Likely pathogenic",
+          "type": "",
+          "MedGen_id": "C0751336",
+          "MedGen_link": "http://ncbi.nlm.nih.gov/medgen/C0751336",
+          "mondo": "http://purl.obolibrary.org/obo/MONDO_0018949",
+          "mondo_id": "MONDO:0018949"
+        },
+        {
+          "tgv_id": "",
+          "tgv_link": "",
+          "position": "12:54284307",
+          "title": "NM_031157.4(HNRNPA1):c.1113_*2delinsTAA (p.Arg371_Ter373delinsSerXaa)",
+          "Clinvar_link": "http://ncbi.nlm.nih.gov/clinvar/variation/2683801",
+          "Clinvar_id": "VCV002683801",
+          "Interpretation": "Likely pathogenic",
+          "type": "",
+          "MedGen_id": "C0751336",
+          "MedGen_link": "http://ncbi.nlm.nih.gov/medgen/C0751336",
+          "mondo": "http://purl.obolibrary.org/obo/MONDO_0018949",
+          "mondo_id": "MONDO:0018949"
+        }
+      ],
+      "current_rows": [
+        {
+          "source": "clinvar",
+          "tgv_id": "tgv22949086",
+          "tgv_link": "https://grch38.togovar.org/variant/tgv22949086",
+          "position": "5:139329477",
+          "title": "NM_018834.6(MATR3):c.*86_*89del",
+          "Clinvar_link": "http://ncbi.nlm.nih.gov/clinvar/variation/351146",
+          "Clinvar_id": "VCV000351146",
+          "ClinVar_id": "VCV000351146",
+          "Interpretation": "Likely benign",
+          "type": "Deletion",
+          "MedGen_id": "C0751336",
+          "MedGen_link": "http://ncbi.nlm.nih.gov/medgen/C0751336",
+          "mondo": "http://purl.obolibrary.org/obo/MONDO_0018949",
+          "mondo_id": "MONDO:0018949",
+          "mondo_url": "http://purl.obolibrary.org/obo/MONDO_0018949",
+          "genotype_count_alt_alt_link": "https://grch38.togovar.org/variant/tgv22949086#frequency",
+          "genotype_count_alt_ref_link": "https://grch38.togovar.org/variant/tgv22949086#frequency",
+          "genotype_count_alt_alt": "No Data",
+          "genotype_count_alt_ref": "No Data",
+          "mgend_id": "",
+          "mgend_url": ""
+        },
+        {
+          "source": "clinvar",
+          "tgv_id": "tgv200780918",
+          "tgv_link": "https://grch38.togovar.org/variant/tgv200780918",
+          "position": "5:139329569",
+          "title": "NM_018834.6(MATR3):c.*175AT[1]",
+          "Clinvar_link": "http://ncbi.nlm.nih.gov/clinvar/variation/351148",
+          "Clinvar_id": "VCV000351148",
+          "ClinVar_id": "VCV000351148",
+          "Interpretation": "Uncertain significance",
+          "type": "Deletion",
+          "MedGen_id": "C0751336",
+          "MedGen_link": "http://ncbi.nlm.nih.gov/medgen/C0751336",
+          "mondo": "http://purl.obolibrary.org/obo/MONDO_0018949",
+          "mondo_id": "MONDO:0018949",
+          "mondo_url": "http://purl.obolibrary.org/obo/MONDO_0018949",
+          "genotype_count_alt_alt_link": "https://grch38.togovar.org/variant/tgv200780918#frequency",
+          "genotype_count_alt_ref_link": "https://grch38.togovar.org/variant/tgv200780918#frequency",
+          "genotype_count_alt_alt": "No Data",
+          "genotype_count_alt_ref": "No Data",
+          "mgend_id": "",
+          "mgend_url": ""
+        },
+        {
+          "source": "clinvar",
+          "tgv_id": "tgv338127495",
+          "tgv_link": "https://grch38.togovar.org/variant/tgv338127495",
+          "position": "5:139331202",
+          "title": "NM_018834.6(MATR3):c.*1810_*1812del",
+          "Clinvar_link": "http://ncbi.nlm.nih.gov/clinvar/variation/351177",
+          "Clinvar_id": "VCV000351177",
+          "ClinVar_id": "VCV000351177",
+          "Interpretation": "Likely benign",
+          "type": "Deletion",
+          "MedGen_id": "C0751336",
+          "MedGen_link": "http://ncbi.nlm.nih.gov/medgen/C0751336",
+          "mondo": "http://purl.obolibrary.org/obo/MONDO_0018949",
+          "mondo_id": "MONDO:0018949",
+          "mondo_url": "http://purl.obolibrary.org/obo/MONDO_0018949",
+          "genotype_count_alt_alt_link": "https://grch38.togovar.org/variant/tgv338127495#frequency",
+          "genotype_count_alt_ref_link": "https://grch38.togovar.org/variant/tgv338127495#frequency",
+          "genotype_count_alt_alt": "No Data",
+          "genotype_count_alt_ref": "No Data",
+          "mgend_id": "",
+          "mgend_url": ""
+        },
+        {
+          "source": "clinvar",
+          "tgv_id": "tgv22947906",
+          "tgv_link": "https://grch38.togovar.org/variant/tgv22947906",
+          "position": "5:139307308",
+          "title": "NM_018834.6(MATR3):c.-103dup",
+          "Clinvar_link": "http://ncbi.nlm.nih.gov/clinvar/variation/351117",
+          "Clinvar_id": "VCV000351117",
+          "ClinVar_id": "VCV000351117",
+          "Interpretation": "Benign",
+          "type": "Insertion",
+          "MedGen_id": "C0751336",
+          "MedGen_link": "http://ncbi.nlm.nih.gov/medgen/C0751336",
+          "mondo": "http://purl.obolibrary.org/obo/MONDO_0018949",
+          "mondo_id": "MONDO:0018949",
+          "mondo_url": "http://purl.obolibrary.org/obo/MONDO_0018949",
+          "genotype_count_alt_alt_link": "https://grch38.togovar.org/variant/tgv22947906#frequency",
+          "genotype_count_alt_ref_link": "https://grch38.togovar.org/variant/tgv22947906#frequency",
+          "genotype_count_alt_alt": "No Data",
+          "genotype_count_alt_ref": "No Data",
+          "mgend_id": "",
+          "mgend_url": ""
+        },
+        {
+          "source": "clinvar",
+          "tgv_id": "",
+          "tgv_link": "",
+          "position": "5:139326289",
+          "title": "NM_018834.6(MATR3):c.2493+7_2493+9del",
+          "Clinvar_link": "http://ncbi.nlm.nih.gov/clinvar/variation/351139",
+          "Clinvar_id": "VCV000351139",
+          "ClinVar_id": "VCV000351139",
+          "Interpretation": "Uncertain significance",
+          "type": "",
+          "MedGen_id": "C0751336",
+          "MedGen_link": "http://ncbi.nlm.nih.gov/medgen/C0751336",
+          "mondo": "http://purl.obolibrary.org/obo/MONDO_0018949",
+          "mondo_id": "MONDO:0018949",
+          "mondo_url": "http://purl.obolibrary.org/obo/MONDO_0018949",
+          "genotype_count_alt_alt_link": "",
+          "genotype_count_alt_ref_link": "",
+          "genotype_count_alt_alt": "No Data",
+          "genotype_count_alt_ref": "No Data",
+          "mgend_id": "",
+          "mgend_url": ""
+        },
+        {
+          "source": "clinvar",
+          "tgv_id": "",
+          "tgv_link": "",
+          "position": "5:139273746",
+          "title": "NM_199189.2(MATR3):c.-784G>A",
+          "Clinvar_link": "http://ncbi.nlm.nih.gov/clinvar/variation/369449",
+          "Clinvar_id": "VCV000369449",
+          "ClinVar_id": "VCV000369449",
+          "Interpretation": "Likely benign",
+          "type": "",
+          "MedGen_id": "C0751336",
+          "MedGen_link": "http://ncbi.nlm.nih.gov/medgen/C0751336",
+          "mondo": "http://purl.obolibrary.org/obo/MONDO_0018949",
+          "mondo_id": "MONDO:0018949",
+          "mondo_url": "http://purl.obolibrary.org/obo/MONDO_0018949",
+          "genotype_count_alt_alt_link": "",
+          "genotype_count_alt_ref_link": "",
+          "genotype_count_alt_alt": "No Data",
+          "genotype_count_alt_ref": "No Data",
+          "mgend_id": "",
+          "mgend_url": ""
+        },
+        {
+          "source": "clinvar",
+          "tgv_id": "",
+          "tgv_link": "",
+          "position": "12:119193786",
+          "title": "NM_014365.3(HSPB8):c.520_533del (p.Tyr174fs)",
+          "Clinvar_link": "http://ncbi.nlm.nih.gov/clinvar/variation/584450",
+          "Clinvar_id": "VCV000584450",
+          "ClinVar_id": "VCV000584450",
+          "Interpretation": "Likely pathogenic",
+          "type": "",
+          "MedGen_id": "C0751336",
+          "MedGen_link": "http://ncbi.nlm.nih.gov/medgen/C0751336",
+          "mondo": "http://purl.obolibrary.org/obo/MONDO_0018949",
+          "mondo_id": "MONDO:0018949",
+          "mondo_url": "http://purl.obolibrary.org/obo/MONDO_0018949",
+          "genotype_count_alt_alt_link": "",
+          "genotype_count_alt_ref_link": "",
+          "genotype_count_alt_alt": "No Data",
+          "genotype_count_alt_ref": "No Data",
+          "mgend_id": "",
+          "mgend_url": ""
+        },
+        {
+          "source": "clinvar",
+          "tgv_id": "",
+          "tgv_link": "",
+          "position": "12:54284307",
+          "title": "NM_031157.4(HNRNPA1):c.1113_*2delinsTAA (p.Arg371_Ter373delinsSerXaa)",
+          "Clinvar_link": "http://ncbi.nlm.nih.gov/clinvar/variation/2683801",
+          "Clinvar_id": "VCV002683801",
+          "ClinVar_id": "VCV002683801",
+          "Interpretation": "Likely pathogenic",
+          "type": "",
+          "MedGen_id": "C0751336",
+          "MedGen_link": "http://ncbi.nlm.nih.gov/medgen/C0751336",
+          "mondo": "http://purl.obolibrary.org/obo/MONDO_0018949",
+          "mondo_id": "MONDO:0018949",
+          "mondo_url": "http://purl.obolibrary.org/obo/MONDO_0018949",
+          "genotype_count_alt_alt_link": "",
+          "genotype_count_alt_ref_link": "",
+          "genotype_count_alt_alt": "No Data",
+          "genotype_count_alt_ref": "No Data",
+          "mgend_id": "",
+          "mgend_url": ""
+        }
+      ],
+      "common_field_differences": []
+    },
+    "mgend": {
+      "public_api": "https://nanbyodata.jp/sparqlist/api/nanbyodata_get_mgend_variant_by_nando_id?nando_id=1200216",
+      "public_rows": [
+        {
+          "omim_id": "OMIMPS:160500",
+          "omim_url": "https://omim.org/phenotypicSeries/PS160500",
+          "mondo_id": "http://purl.obolibrary.org/obo/MONDO_0018949",
+          "mondo_label": "distal myopathy",
+          "mondo_url": "http://purl.obolibrary.org/obo/MONDO_0018949",
+          "significance": "Pathogenic",
+          "type": "Variant",
+          "hgvs": "ENST00000370763.6:c.270T>A",
+          "vtype": "SNV",
+          "position": "78013109",
+          "ch": "1",
+          "genelabel": "DNAJB4",
+          "hgncurl": "http://identifiers.org/hgnc:14886",
+          "hgncID": "HGNC:14886"
+        },
+        {
+          "omim_id": "OMIMPS:160500",
+          "omim_url": "https://omim.org/phenotypicSeries/PS160500",
+          "mondo_id": "http://purl.obolibrary.org/obo/MONDO_0018949",
+          "mondo_label": "distal myopathy",
+          "mondo_url": "http://purl.obolibrary.org/obo/MONDO_0018949",
+          "significance": "Pathogenic",
+          "type": "Variant",
+          "hgvs": "NM_001317099.1:c.270T>A",
+          "vtype": "SNV",
+          "position": "78013109",
+          "ch": "1",
+          "genelabel": "DNAJB4",
+          "hgncurl": "http://identifiers.org/hgnc:14886",
+          "hgncID": "HGNC:14886"
+        },
+        {
+          "omim_id": "OMIMPS:160500",
+          "omim_url": "https://omim.org/phenotypicSeries/PS160500",
+          "mondo_id": "http://purl.obolibrary.org/obo/MONDO_0018949",
+          "mondo_label": "distal myopathy",
+          "mondo_url": "http://purl.obolibrary.org/obo/MONDO_0018949",
+          "significance": "Pathogenic",
+          "type": "Variant",
+          "hgvs": "NM_001317101.1:c.270T>A",
+          "vtype": "SNV",
+          "position": "78013109",
+          "ch": "1",
+          "genelabel": "DNAJB4",
+          "hgncurl": "http://identifiers.org/hgnc:14886",
+          "hgncID": "HGNC:14886"
+        },
+        {
+          "omim_id": "OMIMPS:160500",
+          "omim_url": "https://omim.org/phenotypicSeries/PS160500",
+          "mondo_id": "http://purl.obolibrary.org/obo/MONDO_0018949",
+          "mondo_label": "distal myopathy",
+          "mondo_url": "http://purl.obolibrary.org/obo/MONDO_0018949",
+          "significance": "Pathogenic",
+          "type": "Variant",
+          "hgvs": "NM_001317102.1:c.270T>A",
+          "vtype": "SNV",
+          "position": "78013109",
+          "ch": "1",
+          "genelabel": "DNAJB4",
+          "hgncurl": "http://identifiers.org/hgnc:14886",
+          "hgncID": "HGNC:14886"
+        },
+        {
+          "omim_id": "OMIMPS:160500",
+          "omim_url": "https://omim.org/phenotypicSeries/PS160500",
+          "mondo_id": "http://purl.obolibrary.org/obo/MONDO_0018949",
+          "mondo_label": "distal myopathy",
+          "mondo_url": "http://purl.obolibrary.org/obo/MONDO_0018949",
+          "significance": "Pathogenic",
+          "type": "Variant",
+          "hgvs": "NM_001317103.1:c.270T>A",
+          "vtype": "SNV",
+          "position": "78013109",
+          "ch": "1",
+          "genelabel": "DNAJB4",
+          "hgncurl": "http://identifiers.org/hgnc:14886",
+          "hgncID": "HGNC:14886"
+        },
+        {
+          "omim_id": "OMIMPS:160500",
+          "omim_url": "https://omim.org/phenotypicSeries/PS160500",
+          "mondo_id": "http://purl.obolibrary.org/obo/MONDO_0018949",
+          "mondo_label": "distal myopathy",
+          "mondo_url": "http://purl.obolibrary.org/obo/MONDO_0018949",
+          "significance": "Pathogenic",
+          "type": "Variant",
+          "hgvs": "NM_007034.4:c.270T>A",
+          "vtype": "SNV",
+          "position": "78013109",
+          "ch": "1",
+          "genelabel": "DNAJB4",
+          "hgncurl": "http://identifiers.org/hgnc:14886",
+          "hgncID": "HGNC:14886"
+        }
+      ],
+      "current_rows": [
+        {
+          "source": "mgend",
+          "omim_id": "OMIMPS:160500",
+          "omim_url": "https://omim.org/phenotypicSeries/PS160500",
+          "mondo_id": "http://purl.obolibrary.org/obo/MONDO_0018949",
+          "mondo_label": "distal myopathy",
+          "mondo_url": "http://purl.obolibrary.org/obo/MONDO_0018949",
+          "significance": "Pathogenic",
+          "type": "SNV",
+          "hgvs": "ENST00000370763.6:c.270T>A",
+          "vtype": "SNV",
+          "position": "78013109",
+          "ch": "1",
+          "tgv_id": "tgv417499192",
+          "tgv_link": "https://grch38.togovar.org/variant/tgv417499192",
+          "genotype_count_alt_alt_link": "https://grch38.togovar.org/variant/tgv417499192#frequency",
+          "genotype_count_alt_ref_link": "https://grch38.togovar.org/variant/tgv417499192#frequency",
+          "genotype_count_alt_alt": "No Data",
+          "genotype_count_alt_ref": "No Data",
+          "mgend_id": "SNV|hg38|chr1:78013109-78013109|gT>A",
+          "mgend_url": "https://mgend.jihs.go.jp/variant/info/SNV|hg38|chr1:78013109-78013109|gT>A",
+          "title": "NM_001317099.2(DNAJB4):c.270T>A",
+          "Clinvar_link": "",
+          "ClinVar_id": "",
+          "Interpretation": "",
+          "genelabel": "DNAJB4",
+          "hgncurl": "http://identifiers.org/hgnc:14886",
+          "hgncID": "HGNC:14886"
+        },
+        {
+          "source": "mgend",
+          "omim_id": "OMIMPS:160500",
+          "omim_url": "https://omim.org/phenotypicSeries/PS160500",
+          "mondo_id": "http://purl.obolibrary.org/obo/MONDO_0018949",
+          "mondo_label": "distal myopathy",
+          "mondo_url": "http://purl.obolibrary.org/obo/MONDO_0018949",
+          "significance": "Pathogenic",
+          "type": "SNV",
+          "hgvs": "NM_001317099.1:c.270T>A",
+          "vtype": "SNV",
+          "position": "78013109",
+          "ch": "1",
+          "tgv_id": "tgv417499192",
+          "tgv_link": "https://grch38.togovar.org/variant/tgv417499192",
+          "genotype_count_alt_alt_link": "https://grch38.togovar.org/variant/tgv417499192#frequency",
+          "genotype_count_alt_ref_link": "https://grch38.togovar.org/variant/tgv417499192#frequency",
+          "genotype_count_alt_alt": "No Data",
+          "genotype_count_alt_ref": "No Data",
+          "mgend_id": "SNV|hg38|chr1:78013109-78013109|gT>A",
+          "mgend_url": "https://mgend.jihs.go.jp/variant/info/SNV|hg38|chr1:78013109-78013109|gT>A",
+          "title": "NM_001317099.2(DNAJB4):c.270T>A",
+          "Clinvar_link": "",
+          "ClinVar_id": "",
+          "Interpretation": "",
+          "genelabel": "DNAJB4",
+          "hgncurl": "http://identifiers.org/hgnc:14886",
+          "hgncID": "HGNC:14886"
+        },
+        {
+          "source": "mgend",
+          "omim_id": "OMIMPS:160500",
+          "omim_url": "https://omim.org/phenotypicSeries/PS160500",
+          "mondo_id": "http://purl.obolibrary.org/obo/MONDO_0018949",
+          "mondo_label": "distal myopathy",
+          "mondo_url": "http://purl.obolibrary.org/obo/MONDO_0018949",
+          "significance": "Pathogenic",
+          "type": "SNV",
+          "hgvs": "NM_001317101.1:c.270T>A",
+          "vtype": "SNV",
+          "position": "78013109",
+          "ch": "1",
+          "tgv_id": "tgv417499192",
+          "tgv_link": "https://grch38.togovar.org/variant/tgv417499192",
+          "genotype_count_alt_alt_link": "https://grch38.togovar.org/variant/tgv417499192#frequency",
+          "genotype_count_alt_ref_link": "https://grch38.togovar.org/variant/tgv417499192#frequency",
+          "genotype_count_alt_alt": "No Data",
+          "genotype_count_alt_ref": "No Data",
+          "mgend_id": "SNV|hg38|chr1:78013109-78013109|gT>A",
+          "mgend_url": "https://mgend.jihs.go.jp/variant/info/SNV|hg38|chr1:78013109-78013109|gT>A",
+          "title": "NM_001317099.2(DNAJB4):c.270T>A",
+          "Clinvar_link": "",
+          "ClinVar_id": "",
+          "Interpretation": "",
+          "genelabel": "DNAJB4",
+          "hgncurl": "http://identifiers.org/hgnc:14886",
+          "hgncID": "HGNC:14886"
+        },
+        {
+          "source": "mgend",
+          "omim_id": "OMIMPS:160500",
+          "omim_url": "https://omim.org/phenotypicSeries/PS160500",
+          "mondo_id": "http://purl.obolibrary.org/obo/MONDO_0018949",
+          "mondo_label": "distal myopathy",
+          "mondo_url": "http://purl.obolibrary.org/obo/MONDO_0018949",
+          "significance": "Pathogenic",
+          "type": "SNV",
+          "hgvs": "NM_001317102.1:c.270T>A",
+          "vtype": "SNV",
+          "position": "78013109",
+          "ch": "1",
+          "tgv_id": "tgv417499192",
+          "tgv_link": "https://grch38.togovar.org/variant/tgv417499192",
+          "genotype_count_alt_alt_link": "https://grch38.togovar.org/variant/tgv417499192#frequency",
+          "genotype_count_alt_ref_link": "https://grch38.togovar.org/variant/tgv417499192#frequency",
+          "genotype_count_alt_alt": "No Data",
+          "genotype_count_alt_ref": "No Data",
+          "mgend_id": "SNV|hg38|chr1:78013109-78013109|gT>A",
+          "mgend_url": "https://mgend.jihs.go.jp/variant/info/SNV|hg38|chr1:78013109-78013109|gT>A",
+          "title": "NM_001317099.2(DNAJB4):c.270T>A",
+          "Clinvar_link": "",
+          "ClinVar_id": "",
+          "Interpretation": "",
+          "genelabel": "DNAJB4",
+          "hgncurl": "http://identifiers.org/hgnc:14886",
+          "hgncID": "HGNC:14886"
+        },
+        {
+          "source": "mgend",
+          "omim_id": "OMIMPS:160500",
+          "omim_url": "https://omim.org/phenotypicSeries/PS160500",
+          "mondo_id": "http://purl.obolibrary.org/obo/MONDO_0018949",
+          "mondo_label": "distal myopathy",
+          "mondo_url": "http://purl.obolibrary.org/obo/MONDO_0018949",
+          "significance": "Pathogenic",
+          "type": "SNV",
+          "hgvs": "NM_001317103.1:c.270T>A",
+          "vtype": "SNV",
+          "position": "78013109",
+          "ch": "1",
+          "tgv_id": "tgv417499192",
+          "tgv_link": "https://grch38.togovar.org/variant/tgv417499192",
+          "genotype_count_alt_alt_link": "https://grch38.togovar.org/variant/tgv417499192#frequency",
+          "genotype_count_alt_ref_link": "https://grch38.togovar.org/variant/tgv417499192#frequency",
+          "genotype_count_alt_alt": "No Data",
+          "genotype_count_alt_ref": "No Data",
+          "mgend_id": "SNV|hg38|chr1:78013109-78013109|gT>A",
+          "mgend_url": "https://mgend.jihs.go.jp/variant/info/SNV|hg38|chr1:78013109-78013109|gT>A",
+          "title": "NM_001317099.2(DNAJB4):c.270T>A",
+          "Clinvar_link": "",
+          "ClinVar_id": "",
+          "Interpretation": "",
+          "genelabel": "DNAJB4",
+          "hgncurl": "http://identifiers.org/hgnc:14886",
+          "hgncID": "HGNC:14886"
+        },
+        {
+          "source": "mgend",
+          "omim_id": "OMIMPS:160500",
+          "omim_url": "https://omim.org/phenotypicSeries/PS160500",
+          "mondo_id": "http://purl.obolibrary.org/obo/MONDO_0018949",
+          "mondo_label": "distal myopathy",
+          "mondo_url": "http://purl.obolibrary.org/obo/MONDO_0018949",
+          "significance": "Pathogenic",
+          "type": "SNV",
+          "hgvs": "NM_007034.4:c.270T>A",
+          "vtype": "SNV",
+          "position": "78013109",
+          "ch": "1",
+          "tgv_id": "tgv417499192",
+          "tgv_link": "https://grch38.togovar.org/variant/tgv417499192",
+          "genotype_count_alt_alt_link": "https://grch38.togovar.org/variant/tgv417499192#frequency",
+          "genotype_count_alt_ref_link": "https://grch38.togovar.org/variant/tgv417499192#frequency",
+          "genotype_count_alt_alt": "No Data",
+          "genotype_count_alt_ref": "No Data",
+          "mgend_id": "SNV|hg38|chr1:78013109-78013109|gT>A",
+          "mgend_url": "https://mgend.jihs.go.jp/variant/info/SNV|hg38|chr1:78013109-78013109|gT>A",
+          "title": "NM_001317099.2(DNAJB4):c.270T>A",
+          "Clinvar_link": "",
+          "ClinVar_id": "",
+          "Interpretation": "",
+          "genelabel": "DNAJB4",
+          "hgncurl": "http://identifiers.org/hgnc:14886",
+          "hgncID": "HGNC:14886"
+        }
+      ],
+      "common_field_differences": [
+        {
+          "key": [
+            "ENST00000370763.6:c.270T>A",
+            "1",
+            "78013109"
+          ],
+          "field": "type",
+          "public": "Variant",
+          "current": "SNV"
+        },
+        {
+          "key": [
+            "NM_001317099.1:c.270T>A",
+            "1",
+            "78013109"
+          ],
+          "field": "type",
+          "public": "Variant",
+          "current": "SNV"
+        },
+        {
+          "key": [
+            "NM_001317101.1:c.270T>A",
+            "1",
+            "78013109"
+          ],
+          "field": "type",
+          "public": "Variant",
+          "current": "SNV"
+        },
+        {
+          "key": [
+            "NM_001317102.1:c.270T>A",
+            "1",
+            "78013109"
+          ],
+          "field": "type",
+          "public": "Variant",
+          "current": "SNV"
+        },
+        {
+          "key": [
+            "NM_001317103.1:c.270T>A",
+            "1",
+            "78013109"
+          ],
+          "field": "type",
+          "public": "Variant",
+          "current": "SNV"
+        },
+        {
+          "key": [
+            "NM_007034.4:c.270T>A",
+            "1",
+            "78013109"
+          ],
+          "field": "type",
+          "public": "Variant",
+          "current": "SNV"
+        }
+      ]
+    }
+  },
+  "count_audit": [
+    {
+      "input": {
+        "nando_id": "1200216",
+        "target": "clinvar"
+      },
+      "statistics": {
+        "rows": 8,
+        "queried_locations": 8,
+        "unmatched_rows": 6,
+        "no_data_rows": 8,
+        "genomic_fallback_rows": 2,
+        "matched_rows": 2,
+        "genomic_identity_checked_rows": 2,
+        "distinct_matched_tgv_ids": 0
+      },
+      "examples": {
+        "no_data": {
+          "tgv_id": "",
+          "position": "5:139273746",
+          "counts": {
+            "genotype_count_alt_alt": "No Data",
+            "genotype_count_alt_ref": "No Data"
+          },
+          "frequencies": [
+            {
+              "ac": 70,
+              "af": 0.0003694090119097382,
+              "an": 189492,
+              "filter": [
+                "PASS"
+              ],
+              "source": "gnomad_exomes"
+            },
+            {
+              "ac": 55,
+              "af": 0.00036127600469626486,
+              "an": 152238,
+              "filter": [
+                "PASS"
+              ],
+              "source": "gnomad_genomes"
+            }
+          ]
+        }
+      }
+    },
+    {
+      "input": {
+        "nando_id": "1200216",
+        "target": "mgend"
+      },
+      "statistics": {
+        "rows": 6,
+        "queried_locations": 1,
+        "matched_rows": 6,
+        "genomic_identity_checked_rows": 6,
+        "no_data_rows": 6,
+        "distinct_matched_tgv_ids": 1
+      },
+      "examples": {
+        "no_data": {
+          "tgv_id": "tgv417499192",
+          "position": "1:78013109",
+          "counts": {
+            "genotype_count_alt_alt": "No Data",
+            "genotype_count_alt_ref": "No Data"
+          },
+          "frequencies": []
+        }
+      }
+    },
+    {
+      "input": {
+        "nando_id": "1200012",
+        "target": "clinvar"
+      },
+      "statistics": {
+        "rows": 9,
+        "queried_locations": 8,
+        "id_matched_rows": 3,
+        "matched_rows": 5,
+        "genomic_identity_checked_rows": 5,
+        "no_data_rows": 7,
+        "unmatched_rows": 4,
+        "positive_rows": 1,
+        "zero_rows": 1,
+        "genomic_fallback_rows": 2,
+        "distinct_matched_tgv_ids": 3
+      },
+      "examples": {
+        "no_data": {
+          "tgv_id": "tgv15859684",
+          "position": "4:3208870",
+          "counts": {
+            "genotype_count_alt_alt": "No Data",
+            "genotype_count_alt_ref": "No Data"
+          },
+          "frequencies": [
+            {
+              "ac": 1,
+              "af": 9.000000318337698e-06,
+              "an": 108604,
+              "filter": [
+                "PASS"
+              ],
+              "quality": 797.2899780273438,
+              "source": "tommo"
+            },
+            {
+              "ac": 19,
+              "af": 1.2999100363231264e-05,
+              "an": 1461642,
+              "filter": [
+                "PASS"
+              ],
+              "source": "gnomad_exomes"
+            }
+          ]
+        },
+        "positive": {
+          "tgv_id": "tgv15860454",
+          "position": "4:3224141",
+          "counts": {
+            "genotype_count_alt_alt": 12,
+            "genotype_count_alt_ref": "No Data"
+          },
+          "frequencies": [
+            {
+              "ac": 5735,
+              "af": 0.0039237798191607,
+              "an": 1461602,
+              "filter": [
+                "PASS"
+              ],
+              "source": "gnomad_exomes"
+            },
+            {
+              "ac": 4759,
+              "af": 0.03125569969415665,
+              "an": 152260,
+              "filter": [
+                "PASS"
+              ],
+              "source": "gnomad_genomes"
+            },
+            {
+              "aac": 12,
+              "ac": 178,
+              "af": 0.007561599835753441,
+              "an": 23540,
+              "filter": [
+                "PASS"
+              ],
+              "quality": 82250.1015625,
+              "source": "ncbn"
+            }
+          ]
+        },
+        "zero": {
+          "tgv_id": "tgv324309720",
+          "position": "4:3180540",
+          "counts": {
+            "genotype_count_alt_alt": 0,
+            "genotype_count_alt_ref": "No Data"
+          },
+          "frequencies": [
+            {
+              "ac": 261,
+              "af": 0.00017879500228445977,
+              "an": 1459776,
+              "filter": [
+                "PASS"
+              ],
+              "source": "gnomad_exomes"
+            },
+            {
+              "ac": 275,
+              "af": 0.0018086900236085057,
+              "an": 152044,
+              "filter": [
+                "PASS"
+              ],
+              "source": "gnomad_genomes"
+            },
+            {
+              "aac": 0,
+              "ac": 10,
+              "af": 0.00042495300294831395,
+              "an": 23532,
+              "filter": [
+                "PASS"
+              ],
+              "quality": 4851.27001953125,
+              "source": "ncbn"
+            }
+          ]
+        }
+      }
+    },
+    {
+      "input": {
+        "nando_id": "1200712",
+        "target": "mgend"
+      },
+      "statistics": {
+        "rows": 288,
+        "queried_locations": 135,
+        "matched_rows": 288,
+        "genomic_identity_checked_rows": 288,
+        "no_data_rows": 286,
+        "positive_rows": 2,
+        "distinct_matched_tgv_ids": 144
+      },
+      "examples": {
+        "no_data": {
+          "tgv_id": "tgv417504260",
+          "position": "2:227263845",
+          "counts": {
+            "genotype_count_alt_alt": "No Data",
+            "genotype_count_alt_ref": "No Data"
+          },
+          "frequencies": [
+            {
+              "ac": 11,
+              "af": 7.5249499786878005e-06,
+              "an": 1461804,
+              "filter": [
+                "PASS"
+              ],
+              "source": "gnomad_exomes"
+            },
+            {
+              "ac": 7,
+              "af": 4.599630119628273e-05,
+              "an": 152186,
+              "filter": [
+                "PASS"
+              ],
+              "source": "gnomad_genomes"
+            }
+          ]
+        },
+        "positive": {
+          "tgv_id": "tgv66819977",
+          "position": "X:108622766",
+          "counts": {
+            "genotype_count_alt_alt": 1210,
+            "genotype_count_alt_ref": 2026
+          },
+          "frequencies": [
+            {
+              "aac": 1206,
+              "ac": 4438,
+              "af": 0.01218630000948906,
+              "an": 364180,
+              "arc": 2026,
+              "filter": [
+                "PASS"
+              ],
+              "rrc": 178858,
+              "source": "jga_snp"
+            },
+            {
+              "ac": 1013,
+              "af": 0.011212999932467937,
+              "an": 90341,
+              "filter": [
+                "PASS"
+              ],
+              "quality": 549416,
+              "source": "tommo"
+            },
+            {
+              "ac": 1146,
+              "af": 0.0010447100503370166,
+              "an": 1096952,
+              "filter": [
+                "PASS"
+              ],
+              "source": "gnomad_exomes"
+            },
+            {
+              "ac": 178,
+              "af": 0.0015824999427422881,
+              "an": 112480,
+              "filter": [
+                "PASS"
+              ],
+              "source": "gnomad_genomes"
+            },
+            {
+              "ac": 114,
+              "af": 0.013000000268220901,
+              "an": 8727,
+              "filter": [
+                "PASS"
+              ],
+              "quality": 57751.69921875,
+              "source": "gem_j_wga"
+            },
+            {
+              "aac": 4,
+              "ac": 207,
+              "af": 0.011661999858915806,
+              "an": 17750,
+              "filter": [
+                "PASS"
+              ],
+              "hac": 69,
+              "quality": 111551,
+              "source": "ncbn"
+            },
+            {
+              "aac": 0,
+              "ac": 1,
+              "af": 0.032258063554763794,
+              "an": 31,
+              "aoc": 0,
+              "arc": 0,
+              "filter": [
+                "PASS"
+              ],
+              "hac": 1,
+              "hoc": 0,
+              "ooc": 0,
+              "roc": 0,
+              "rrc": 10,
+              "source": "jga_wgs"
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "count_examples": [
+    {
+      "nando_id": "1200216",
+      "target": "mgend",
+      "output_row": {
+        "source": "mgend",
+        "omim_id": "OMIMPS:160500",
+        "omim_url": "https://omim.org/phenotypicSeries/PS160500",
+        "mondo_id": "http://purl.obolibrary.org/obo/MONDO_0018949",
+        "mondo_label": "distal myopathy",
+        "mondo_url": "http://purl.obolibrary.org/obo/MONDO_0018949",
+        "significance": "Pathogenic",
+        "type": "SNV",
+        "hgvs": "ENST00000370763.6:c.270T>A",
+        "vtype": "SNV",
+        "position": "78013109",
+        "ch": "1",
+        "tgv_id": "tgv417499192",
+        "tgv_link": "https://grch38.togovar.org/variant/tgv417499192",
+        "genotype_count_alt_alt_link": "https://grch38.togovar.org/variant/tgv417499192#frequency",
+        "genotype_count_alt_ref_link": "https://grch38.togovar.org/variant/tgv417499192#frequency",
+        "genotype_count_alt_alt": "No Data",
+        "genotype_count_alt_ref": "No Data",
+        "mgend_id": "SNV|hg38|chr1:78013109-78013109|gT>A",
+        "mgend_url": "https://mgend.jihs.go.jp/variant/info/SNV|hg38|chr1:78013109-78013109|gT>A",
+        "title": "NM_001317099.2(DNAJB4):c.270T>A",
+        "Clinvar_link": "",
+        "ClinVar_id": "",
+        "Interpretation": "",
+        "genelabel": "DNAJB4",
+        "hgncurl": "http://identifiers.org/hgnc:14886",
+        "hgncID": "HGNC:14886"
+      },
+      "togovar_record": {
+        "id": "tgv417499192",
+        "chromosome": "1",
+        "position": 78013109,
+        "reference": "T",
+        "alternate": "A"
+      },
+      "frequency_url": "https://grch38.togovar.org/variant/tgv417499192#frequency"
+    },
+    {
+      "nando_id": "1200012",
+      "target": "clinvar",
+      "output_row": {
+        "source": "clinvar",
+        "tgv_id": "tgv15860454",
+        "tgv_link": "https://grch38.togovar.org/variant/tgv15860454",
+        "position": "4:3224141",
+        "title": "NM_001388492.1(HTT):c.7765+10G>A",
+        "Clinvar_link": "http://ncbi.nlm.nih.gov/clinvar/variation/1599166",
+        "Clinvar_id": "VCV001599166",
+        "ClinVar_id": "VCV001599166",
+        "Interpretation": "Likely benign",
+        "type": "SNV",
+        "MedGen_id": "C0020179",
+        "MedGen_link": "http://ncbi.nlm.nih.gov/medgen/C0020179",
+        "mondo": "http://purl.obolibrary.org/obo/MONDO_0007739",
+        "mondo_id": "MONDO:0007739",
+        "mondo_url": "http://purl.obolibrary.org/obo/MONDO_0007739",
+        "genotype_count_alt_alt_link": "https://grch38.togovar.org/variant/tgv15860454#frequency",
+        "genotype_count_alt_ref_link": "https://grch38.togovar.org/variant/tgv15860454#frequency",
+        "genotype_count_alt_alt": 12,
+        "genotype_count_alt_ref": "No Data",
+        "mgend_id": "",
+        "mgend_url": ""
+      },
+      "togovar_record": {
+        "id": "tgv15860454",
+        "chromosome": "4",
+        "position": 3224141,
+        "reference": "G",
+        "alternate": "A",
+        "frequencies": [
+          {
+            "ac": 5735,
+            "af": 0.0039237798191607,
+            "an": 1461602,
+            "filter": [
+              "PASS"
+            ],
+            "source": "gnomad_exomes"
+          },
+          {
+            "ac": 4759,
+            "af": 0.03125569969415665,
+            "an": 152260,
+            "filter": [
+              "PASS"
+            ],
+            "source": "gnomad_genomes"
+          },
+          {
+            "aac": 12,
+            "ac": 178,
+            "af": 0.007561599835753441,
+            "an": 23540,
+            "filter": [
+              "PASS"
+            ],
+            "quality": 82250.1015625,
+            "source": "ncbn"
+          }
+        ]
+      },
+      "frequency_url": "https://grch38.togovar.org/variant/tgv15860454#frequency"
+    },
+    {
+      "nando_id": "1200012",
+      "target": "clinvar",
+      "output_row": {
+        "source": "clinvar",
+        "tgv_id": "tgv324309720",
+        "tgv_link": "https://grch38.togovar.org/variant/tgv324309720",
+        "position": "4:3180540",
+        "title": "NM_001388492.1(HTT):c.4638C>G (p.Val1546=)",
+        "Clinvar_link": "http://ncbi.nlm.nih.gov/clinvar/variation/1671702",
+        "Clinvar_id": "VCV001671702",
+        "ClinVar_id": "VCV001671702",
+        "Interpretation": "Likely benign",
+        "type": "SNV",
+        "MedGen_id": "C0020179",
+        "MedGen_link": "http://ncbi.nlm.nih.gov/medgen/C0020179",
+        "mondo": "http://purl.obolibrary.org/obo/MONDO_0007739",
+        "mondo_id": "MONDO:0007739",
+        "mondo_url": "http://purl.obolibrary.org/obo/MONDO_0007739",
+        "genotype_count_alt_alt_link": "https://grch38.togovar.org/variant/tgv324309720#frequency",
+        "genotype_count_alt_ref_link": "https://grch38.togovar.org/variant/tgv324309720#frequency",
+        "genotype_count_alt_alt": 0,
+        "genotype_count_alt_ref": "No Data",
+        "mgend_id": "",
+        "mgend_url": ""
+      },
+      "togovar_record": {
+        "id": "tgv324309720",
+        "chromosome": "4",
+        "position": 3180540,
+        "reference": "C",
+        "alternate": "G",
+        "frequencies": [
+          {
+            "ac": 261,
+            "af": 0.00017879500228445977,
+            "an": 1459776,
+            "filter": [
+              "PASS"
+            ],
+            "source": "gnomad_exomes"
+          },
+          {
+            "ac": 275,
+            "af": 0.0018086900236085057,
+            "an": 152044,
+            "filter": [
+              "PASS"
+            ],
+            "source": "gnomad_genomes"
+          },
+          {
+            "aac": 0,
+            "ac": 10,
+            "af": 0.00042495300294831395,
+            "an": 23532,
+            "filter": [
+              "PASS"
+            ],
+            "quality": 4851.27001953125,
+            "source": "ncbn"
+          }
+        ]
+      },
+      "frequency_url": "https://grch38.togovar.org/variant/tgv324309720#frequency"
+    },
+    {
+      "nando_id": "1200712",
+      "target": "mgend",
+      "output_row": {
+        "source": "mgend",
+        "omim_id": "OMIMPS:301050",
+        "omim_url": "https://omim.org/phenotypicSeries/PS301050",
+        "mondo_id": "http://purl.obolibrary.org/obo/MONDO_0018965",
+        "mondo_label": "Alport syndrome",
+        "mondo_url": "http://purl.obolibrary.org/obo/MONDO_0018965",
+        "significance": "Pathogenic",
+        "type": "SNV",
+        "hgvs": "ENST00000328300.11:c.2858G>T",
+        "vtype": "SNV",
+        "position": "108622766",
+        "ch": "X",
+        "tgv_id": "tgv66819977",
+        "tgv_link": "https://grch38.togovar.org/variant/tgv66819977",
+        "genotype_count_alt_alt_link": "https://grch38.togovar.org/variant/tgv66819977#frequency",
+        "genotype_count_alt_ref_link": "https://grch38.togovar.org/variant/tgv66819977#frequency",
+        "genotype_count_alt_alt": 1210,
+        "genotype_count_alt_ref": 2026,
+        "mgend_id": "SNV|hg38|chrX:108622766-108622766|gG>T",
+        "mgend_url": "https://mgend.jihs.go.jp/variant/info/SNV|hg38|chrX:108622766-108622766|gG>T",
+        "title": "NM_000495.5(COL4A5):c.2858G>T",
+        "Clinvar_link": "https://www.ncbi.nlm.nih.gov/clinvar/variation/24573",
+        "ClinVar_id": "VCV000024573",
+        "Interpretation": "Benign, CI",
+        "genelabel": "COL4A5",
+        "hgncurl": "http://identifiers.org/hgnc:2207",
+        "hgncID": "HGNC:2207"
+      },
+      "togovar_record": {
+        "id": "tgv66819977",
+        "chromosome": "X",
+        "position": 108622766,
+        "reference": "G",
+        "alternate": "T",
+        "frequencies": [
+          {
+            "aac": 1206,
+            "ac": 4438,
+            "af": 0.01218630000948906,
+            "an": 364180,
+            "arc": 2026,
+            "filter": [
+              "PASS"
+            ],
+            "rrc": 178858,
+            "source": "jga_snp"
+          },
+          {
+            "ac": 1013,
+            "af": 0.011212999932467937,
+            "an": 90341,
+            "filter": [
+              "PASS"
+            ],
+            "quality": 549416,
+            "source": "tommo"
+          },
+          {
+            "ac": 1146,
+            "af": 0.0010447100503370166,
+            "an": 1096952,
+            "filter": [
+              "PASS"
+            ],
+            "source": "gnomad_exomes"
+          },
+          {
+            "ac": 178,
+            "af": 0.0015824999427422881,
+            "an": 112480,
+            "filter": [
+              "PASS"
+            ],
+            "source": "gnomad_genomes"
+          },
+          {
+            "ac": 114,
+            "af": 0.013000000268220901,
+            "an": 8727,
+            "filter": [
+              "PASS"
+            ],
+            "quality": 57751.69921875,
+            "source": "gem_j_wga"
+          },
+          {
+            "aac": 4,
+            "ac": 207,
+            "af": 0.011661999858915806,
+            "an": 17750,
+            "filter": [
+              "PASS"
+            ],
+            "hac": 69,
+            "quality": 111551,
+            "source": "ncbn"
+          },
+          {
+            "aac": 0,
+            "ac": 1,
+            "af": 0.032258063554763794,
+            "an": 31,
+            "aoc": 0,
+            "arc": 0,
+            "filter": [
+              "PASS"
+            ],
+            "hac": 1,
+            "hoc": 0,
+            "ooc": 0,
+            "roc": 0,
+            "rrc": 10,
+            "source": "jga_wgs"
+          }
+        ]
+      },
+      "frequency_url": "https://grch38.togovar.org/variant/tgv66819977#frequency"
+    }
+  ]
+}

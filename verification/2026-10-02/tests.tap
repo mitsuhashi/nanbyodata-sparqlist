@@ -1,0 +1,262 @@
+TAP version 13
+# Subtest: recorded public API: 1200012 clinvar no_data tgv15859684
+ok 1 - recorded public API: 1200012 clinvar no_data tgv15859684
+  ---
+  duration_ms: 2.059041
+  type: 'test'
+  ...
+# Subtest: recorded public API: 1200012 clinvar positive tgv15860454
+ok 2 - recorded public API: 1200012 clinvar positive tgv15860454
+  ---
+  duration_ms: 0.812
+  type: 'test'
+  ...
+# Subtest: recorded public API: 1200012 clinvar zero tgv324309720
+ok 3 - recorded public API: 1200012 clinvar zero tgv324309720
+  ---
+  duration_ms: 0.994583
+  type: 'test'
+  ...
+# Subtest: recorded public API: 1200712 mgend no_data tgv417504260
+ok 4 - recorded public API: 1200712 mgend no_data tgv417504260
+  ---
+  duration_ms: 1.081041
+  type: 'test'
+  ...
+# Subtest: recorded public API: 1200712 mgend positive tgv66819977
+ok 5 - recorded public API: 1200712 mgend positive tgv66819977
+  ---
+  duration_ms: 0.933667
+  type: 'test'
+  ...
+# Subtest: recorded public API: 1200157 clinvar no_data tgv417554894
+ok 6 - recorded public API: 1200157 clinvar no_data tgv417554894
+  ---
+  duration_ms: 0.437916
+  type: 'test'
+  ...
+# Subtest: recorded public API: 1200157 clinvar zero tgv415862128
+ok 7 - recorded public API: 1200157 clinvar zero tgv415862128
+  ---
+  duration_ms: 0.474792
+  type: 'test'
+  ...
+# Subtest: recorded public API: 1200157 clinvar positive tgv238792237
+ok 8 - recorded public API: 1200157 clinvar positive tgv238792237
+  ---
+  duration_ms: 0.515
+  type: 'test'
+  ...
+# Subtest: response schema: 1200012 clinvar no_data tgv15859684, REST matched=true
+ok 9 - response schema: 1200012 clinvar no_data tgv15859684, REST matched=true
+  ---
+  duration_ms: 2.388792
+  type: 'test'
+  ...
+# Subtest: response schema: 1200012 clinvar no_data tgv15859684, REST matched=false
+ok 10 - response schema: 1200012 clinvar no_data tgv15859684, REST matched=false
+  ---
+  duration_ms: 1.41025
+  type: 'test'
+  ...
+# Subtest: response schema: 1200012 clinvar positive tgv15860454, REST matched=true
+ok 11 - response schema: 1200012 clinvar positive tgv15860454, REST matched=true
+  ---
+  duration_ms: 0.995209
+  type: 'test'
+  ...
+# Subtest: response schema: 1200012 clinvar positive tgv15860454, REST matched=false
+ok 12 - response schema: 1200012 clinvar positive tgv15860454, REST matched=false
+  ---
+  duration_ms: 1.097166
+  type: 'test'
+  ...
+# Subtest: response schema: 1200012 clinvar zero tgv324309720, REST matched=true
+ok 13 - response schema: 1200012 clinvar zero tgv324309720, REST matched=true
+  ---
+  duration_ms: 1.416375
+  type: 'test'
+  ...
+# Subtest: response schema: 1200012 clinvar zero tgv324309720, REST matched=false
+ok 14 - response schema: 1200012 clinvar zero tgv324309720, REST matched=false
+  ---
+  duration_ms: 2.329
+  type: 'test'
+  ...
+# Subtest: response schema: 1200712 mgend no_data tgv417504260, REST matched=true
+ok 15 - response schema: 1200712 mgend no_data tgv417504260, REST matched=true
+  ---
+  duration_ms: 1.359541
+  type: 'test'
+  ...
+# Subtest: response schema: 1200712 mgend no_data tgv417504260, REST matched=false
+ok 16 - response schema: 1200712 mgend no_data tgv417504260, REST matched=false
+  ---
+  duration_ms: 1.115834
+  type: 'test'
+  ...
+# Subtest: response schema: 1200712 mgend positive tgv66819977, REST matched=true
+ok 17 - response schema: 1200712 mgend positive tgv66819977, REST matched=true
+  ---
+  duration_ms: 0.914416
+  type: 'test'
+  ...
+# Subtest: response schema: 1200712 mgend positive tgv66819977, REST matched=false
+ok 18 - response schema: 1200712 mgend positive tgv66819977, REST matched=false
+  ---
+  duration_ms: 0.927459
+  type: 'test'
+  ...
+# Subtest: response schema: 1200157 clinvar no_data tgv417554894, REST matched=true
+ok 19 - response schema: 1200157 clinvar no_data tgv417554894, REST matched=true
+  ---
+  duration_ms: 0.918875
+  type: 'test'
+  ...
+# Subtest: response schema: 1200157 clinvar no_data tgv417554894, REST matched=false
+ok 20 - response schema: 1200157 clinvar no_data tgv417554894, REST matched=false
+  ---
+  duration_ms: 0.891542
+  type: 'test'
+  ...
+# Subtest: response schema: 1200157 clinvar zero tgv415862128, REST matched=true
+ok 21 - response schema: 1200157 clinvar zero tgv415862128, REST matched=true
+  ---
+  duration_ms: 0.836209
+  type: 'test'
+  ...
+# Subtest: response schema: 1200157 clinvar zero tgv415862128, REST matched=false
+ok 22 - response schema: 1200157 clinvar zero tgv415862128, REST matched=false
+  ---
+  duration_ms: 0.95025
+  type: 'test'
+  ...
+# Subtest: response schema: 1200157 clinvar positive tgv238792237, REST matched=true
+ok 23 - response schema: 1200157 clinvar positive tgv238792237, REST matched=true
+  ---
+  duration_ms: 0.94825
+  type: 'test'
+  ...
+# Subtest: response schema: 1200157 clinvar positive tgv238792237, REST matched=false
+ok 24 - response schema: 1200157 clinvar positive tgv238792237, REST matched=false
+  ---
+  duration_ms: 1.02925
+  type: 'test'
+  ...
+# Subtest: empty final response: clinvar
+ok 25 - empty final response: clinvar
+  ---
+  duration_ms: 0.656541
+  type: 'test'
+  ...
+# Subtest: empty final response: mgend
+ok 26 - empty final response: mgend
+  ---
+  duration_ms: 0.543458
+  type: 'test'
+  ...
+# Subtest: normalizes parameters consistently and rejects invalid input before SPARQL
+ok 27 - normalizes parameters consistently and rejects invalid input before SPARQL
+  ---
+  duration_ms: 4.672583
+  type: 'test'
+  ...
+# Subtest: ClinVar falls back to exact genomic identity when the ID is absent or unmatched
+ok 28 - ClinVar falls back to exact genomic identity when the ID is absent or unmatched
+  ---
+  duration_ms: 2.52475
+  type: 'test'
+  ...
+# Subtest: MGeND reverse-strand HGVS matches genomic alleles, excluding the other ALT
+ok 29 - MGeND reverse-strand HGVS matches genomic alleles, excluding the other ALT
+  ---
+  duration_ms: 0.858958
+  type: 'test'
+  ...
+# Subtest: zero counts are preserved, missing counts remain No Data
+ok 30 - zero counts are preserved, missing counts remain No Data
+  ---
+  duration_ms: 1.648625
+  type: 'test'
+  ...
+# Subtest: GRCh37 coordinates are not submitted to GRCh38 search
+ok 31 - GRCh37 coordinates are not submitted to GRCh38 search
+  ---
+  duration_ms: 0.953959
+  type: 'test'
+  ...
+# Subtest: empty results do not invoke the REST API
+ok 32 - empty results do not invoke the REST API
+  ---
+  duration_ms: 0.7965
+  type: 'test'
+  ...
+# Subtest: MGeND requires a disease mapping and uses named graphs
+ok 33 - MGeND requires a disease mapping and uses named graphs
+  ---
+  duration_ms: 0.309083
+  type: 'test'
+  ...
+# Subtest: indels require an exact transcript HGVS match
+ok 34 - indels require an exact transcript HGVS match
+  ---
+  duration_ms: 0.7955
+  type: 'test'
+  ...
+# Subtest: REST locations are deduplicated across transcript rows
+ok 35 - REST locations are deduplicated across transcript rows
+  ---
+  duration_ms: 1.318083
+  type: 'test'
+  ...
+# Subtest: ClinVar genomic fallback rejects wrong chromosome, position, REF and ALT
+ok 36 - ClinVar genomic fallback rejects wrong chromosome, position, REF and ALT
+  ---
+  duration_ms: 2.028333
+  type: 'test'
+  ...
+# Subtest: ClinVar fallback accepts REST records without IDs and supplements links
+ok 37 - ClinVar fallback accepts REST records without IDs and supplements links
+  ---
+  duration_ms: 0.578875
+  type: 'test'
+  ...
+# Subtest: ClinVar prefers ID matches over genomic fallback
+ok 38 - ClinVar prefers ID matches over genomic fallback
+  ---
+  duration_ms: 0.393458
+  type: 'test'
+  ...
+# Subtest: ClinVar fallback accepts exact indels but rejects different representations and builds
+ok 39 - ClinVar fallback accepts exact indels but rejects different representations and builds
+  ---
+  duration_ms: 2.666625
+  type: 'test'
+  ...
+# Subtest: ClinVar does not choose arbitrarily between duplicate genomic candidates
+ok 40 - ClinVar does not choose arbitrarily between duplicate genomic candidates
+  ---
+  duration_ms: 0.377958
+  type: 'test'
+  ...
+# Subtest: count links include zero and No Data in both sources
+ok 41 - count links include zero and No Data in both sources
+  ---
+  duration_ms: 1.677
+  type: 'test'
+  ...
+# Subtest: count links use the matched REST ID and do not invent an ID when missing
+ok 42 - count links use the matched REST ID and do not invent an ID when missing
+  ---
+  duration_ms: 1.372917
+  type: 'test'
+  ...
+1..42
+# tests 42
+# suites 0
+# pass 42
+# fail 0
+# cancelled 0
+# skipped 0
+# todo 0
+# duration_ms 117.318375

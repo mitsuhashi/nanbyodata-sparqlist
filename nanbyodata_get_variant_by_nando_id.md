@@ -287,7 +287,7 @@ async ({medgen2clinvar2togovar}) => {
 
 ## `clinvar_variants`
 
-ClinVar SPARQL の結果と TogoVar REST API の結果を統合し、最終的な ClinVar 用 JSON に整形します。TogoVar REST API から genotype count と MGeND URL も追加します。
+ClinVar SPARQL の結果と TogoVar REST API の結果を統合し、内部処理用の ClinVar データ に整形します。TogoVar REST API から genotype count と MGeND URL も追加します。
 
 ```javascript
 ({medgen2clinvar2togovar, nando2mondo2medgen, clinvar_togovar}) => {
@@ -337,7 +337,6 @@ ClinVar SPARQL の結果と TogoVar REST API の結果を統合し、最終的�
       title: x.title && x.title.value ? x.title.value : "",
       Clinvar_link: x.clinvar && x.clinvar.value ? x.clinvar.value : "",
       Clinvar_id: x.vcv && x.vcv.value ? x.vcv.value : "",
-      ClinVar_id: x.vcv && x.vcv.value ? x.vcv.value : "",
       Interpretation: x.interpretation && x.interpretation.value ? x.interpretation.value : "",
       type: x.type && x.type.value ? x.type.value.replace("http://genome-variation.org/resource#", "") : "",
       MedGen_id: medgenUri ? medgenUri.replace("http://ncbi.nlm.nih.gov/medgen/", "") : "",
@@ -362,7 +361,7 @@ ClinVar SPARQL の結果と TogoVar REST API の結果を統合し、最終的�
 
 ## `mgend_variants`
 
-MGeND SPARQL の結果と TogoVar REST API の結果を統合し、最終的な MGeND 用 JSON に整形します。TogoVar REST API から TogoVar ID、MGeND URL、ClinVar URL、genotype count も追加します。
+MGeND SPARQL の結果と TogoVar REST API の結果を統合し、内部処理用の MGeND データ に整形します。TogoVar REST API から TogoVar ID、MGeND URL、ClinVar URL、genotype count も追加します。
 
 ```javascript
 ({nando2mondo2mgend, togovar}) => {
@@ -451,7 +450,6 @@ MGeND SPARQL の結果と TogoVar REST API の結果を統合し、最終的な 
       mgend_url: mgendLink?.xref || "",
       title: title,
       Clinvar_link: clinvarLink?.xref || "",
-      ClinVar_id: clinvarLink?.title || "",
       Interpretation: interpretations.join(", "),
       genelabel: d.genelabel.value,
       hgncurl: d.geneXref.value,
@@ -464,11 +462,19 @@ MGeND SPARQL の結果と TogoVar REST API の結果を統合し、最終的な 
 
 ## `variants`
 
-`target` パラメータに応じて、ClinVar 用の結果または MGeND 用の結果を選択します。検証・正規化済みの対象名に基づいて返します。
+`target` パラメータに応じて、ClinVar 用の結果または MGeND 用の結果を選択します。検証・正規化済みの対象名に基づき、レスポンス例にあるキーのみ返します。照合用の内部情報は出力しません。
 
 ```javascript
 ({input, clinvar_variants, mgend_variants}) => {
-  return input.target === "mgend" ? mgend_variants : clinvar_variants;
+  const keys = input.target === "mgend"
+    ? ["omim_id", "omim_url", "mondo_id", "mondo_label", "mondo_url",
+       "significance", "type", "hgvs", "vtype", "position", "ch", "tgv_id",
+       "tgv_link", "genotype_count_alt_alt", "genotype_count_alt_ref",
+       "mgend_id", "mgend_url", "genelabel", "hgncurl", "hgncID"]
+    : ["tgv_id", "tgv_link", "position", "title", "Clinvar_link", "Clinvar_id",
+       "Interpretation", "type", "MedGen_id", "MedGen_link", "mondo", "mondo_id"];
+  const rows = input.target === "mgend" ? mgend_variants : clinvar_variants;
+  return rows.map(row => Object.fromEntries(keys.map(key => [key, row[key]])));
 }
 ```
 
@@ -481,8 +487,9 @@ MGeND SPARQL の結果と TogoVar REST API の結果を統合し、最終的な 
 ```
 
 ## Description
-- countは欠損を除いたデータセットの合計です。0と欠損のみの場合は0、すべて欠損または照合不可の場合は「No Data」です。0は全データセットでの不在を意味しません。
-- `genotype_count_alt_alt_link` / `genotype_count_alt_ref_link` は、TogoVar IDがある場合に、その変異の `#frequency` URLを返します。数値・0・No Dataのすべてがリンク対象です。ClinVarではREST側のIDを優先し、なければSPARQL側のIDを使います。どちらにもIDがない場合は空文字です。
+- 最終レスポンスは下記の例と同じキー構成です（ClinVar 12キー、MGeND 20キー）。ClinVarのIDは `Clinvar_id` です。countはMGeNDのみ返します。
+- MGeNDのcountは欠損を除いたデータセットの合計です。0と欠損のみの場合は0、すべて欠損または照合不可の場合は「No Data」です。0は全データセットでの不在を意味しません。
+- frequencyリンク用のキーはレスポンスに含めません。ローカルビューアはMGeNDの `tgv_id` から `#frequency` URLを生成し、数値・0・No Dataにリンクを付けます。IDがない場合はリンクを付けません。
 - ClinVar / MGeND の疾患関連レコードを取得します。結果は転写産物・疾患・分類ごとの行を含み、行数はユニークな変異数ではありません。
 - NANDOの直接のexactMatch / closeMatchを対象とします。子疾患は展開しません。MGeNDはMONDOのOMIM Phenotypic Series経由で、c.HGVS・位置・遺伝子情報が揃うレコードに限定されます。全関連変異を網羅する検索ではありません。
 - TogoVar REST APIとの照合はGRCh38を対象とします。一致が確認できない補完情報は空文字または「No Data」とします。

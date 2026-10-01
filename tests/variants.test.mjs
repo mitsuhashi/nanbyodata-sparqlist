@@ -16,7 +16,7 @@ test('normalizes parameters consistently and rejects invalid input before SPARQL
   for (const target of ['mgend', 'MGeND', 'medgen']) {
     const input = evaluate('input', {nando_id: ' NANDO:1200216 ', target});
     assert.equal(input.nando_id, '1200216'); assert.equal(input.target, 'mgend');
-    assert.equal(evaluate('variants', {input, mgend_variants: 'mgend', clinvar_variants: 'clinvar'}), 'mgend');
+    assert.equal(evaluate('variants', {input, mgend_variants: [{hgvs: 'selected'}], clinvar_variants: []})[0].hgvs, 'selected');
   }
   assert.throws(() => evaluate('input', {nando_id: '1 } UNION {', target: 'clinvar'}));
   assert.throws(() => evaluate('input', {nando_id: '1200216', target: 'typo'}));

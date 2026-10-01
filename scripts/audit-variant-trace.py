@@ -63,6 +63,9 @@ def audit(path):
             if hgvs and (hgvs[1], hgvs[2]) != (variant['reference'], variant['alternate']):
                 stats['transcript_genomic_alleles_differ_rows'] += 1
                 examples.setdefault('transcript_genomic_alleles_differ', {'tgv_id': variant.get('id', ''), 'hgvs': binding['hgvs']['value'], 'reference': variant['reference'], 'alternate': variant['alternate']})
+        if target == 'clinvar' and 'genotype_count_alt_alt' not in row:
+            stats['count_not_in_response_rows'] += 1
+            continue
         raw = variant.get('frequencies', []) if variant else []
         counts = {}
         for output, nested, flat in [('genotype_count_alt_alt', 'alt_homo_count', 'aac'), ('genotype_count_alt_ref', 'hetero_count', 'arc')]:

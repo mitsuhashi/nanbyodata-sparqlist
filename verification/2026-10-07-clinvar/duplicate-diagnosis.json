@@ -1,0 +1,891 @@
+{
+  "date": "2026-10-07T08:49:56.248Z",
+  "source_sha256": "f44aaefbcfb064a27c92a683afe3e205b94fb6db1922f50556f96ca9f67e1887",
+  "checks": [
+    {
+      "name": "original_subset",
+      "query": "PREFIX cvo:    <http://purl.jp/bio/10/clinvar/>\nPREFIX dct:    <http://purl.org/dc/terms/>\nPREFIX medgen: <http://ncbi.nlm.nih.gov/medgen/>\nPREFIX rdfs:   <http://www.w3.org/2000/01/rdf-schema#>\nPREFIX sio:    <http://semanticscience.org/resource/>\nPREFIX tgvo:   <http://togovar.biosciencedbc.jp/vocabulary/>\n\nSELECT DISTINCT ?variation_id ?tgv_id ?rs_id ?variant ?title ?condition ?clinvar ?vcv ?type ?med_id ?interpretation\nWHERE {\n  VALUES ?med_id { <http://ncbi.nlm.nih.gov/medgen/C0268242> } \n\n  GRAPH <http://togovar.org/clinvar> {\n    ?med_id ^dct:references ?_classified_condition .\n\n    ?_classified_condition ^cvo:classified_condition/^cvo:classified_condition_list ?_rcv ;\n      rdfs:label ?condition .\n\n    ?_rcv cvo:rcv_classifications/cvo:germline_classification/cvo:description/cvo:description ?interpretation ;\n      cvo:rcv_classifications/cvo:germline_classification/cvo:description/cvo:date_last_evaluated ?last_evaluated ;\n      ^cvo:rcv_accession/^cvo:rcv_list/^cvo:classified_record ?clinvar .\n\n    ?clinvar a cvo:VariationArchiveType ;\n      rdfs:label ?title ;\n      cvo:accession ?vcv ;\n      cvo:variation_id ?vid .\n     # cvo:interpreted_record/cvo:review_status ?review_status ;\n     # cvo:interpreted_record/sio:SIO_000628/dct:references ?dbsnp .\n\n    BIND(STR(?vid) AS ?variation_id)\nFILTER(STR(?vid) IN (\"371347\",\"813421\",\"813474\",\"857473\",\"1173970\",\"1721487\",\"969162\"))\n\n    # ?dbsnp rdfs:seeAlso ?rs_id ;\n    #  dct:source ?dbname .\n    # FILTER(?dbname IN (\"dbSNP\"))\n  }\n\n  OPTIONAL{ \n    GRAPH <http://togovar.org/variant> {\n      ?variant dct:identifier ?variation_id .\n      FILTER REGEX(?variation_id, \"^[0-9]+$\")\n\n      ?variant dct:identifier ?tgv_id ;\n               rdf:type ?type.\n      FILTER(!REGEX(?tgv_id, \"^[0-9]+$\")).  # tgv_id like 'tgv0001' or '1-1234-A-C'\n    }\n  }\n}\n                    \n",
+      "response": {
+        "head": {
+          "link": [],
+          "vars": [
+            "variation_id",
+            "tgv_id",
+            "rs_id",
+            "variant",
+            "title",
+            "condition",
+            "clinvar",
+            "vcv",
+            "type",
+            "med_id",
+            "interpretation"
+          ]
+        },
+        "results": {
+          "distinct": false,
+          "ordered": true,
+          "bindings": [
+            {
+              "variation_id": {
+                "type": "literal",
+                "value": "371347"
+              },
+              "title": {
+                "type": "literal",
+                "value": "NM_000543.5(SMPD1):c.1497_1498del (p.Tyr500fs)"
+              },
+              "condition": {
+                "type": "literal",
+                "value": "Niemann-Pick disease, type A"
+              },
+              "clinvar": {
+                "type": "uri",
+                "value": "http://ncbi.nlm.nih.gov/clinvar/variation/371347"
+              },
+              "vcv": {
+                "type": "literal",
+                "value": "VCV000371347"
+              },
+              "med_id": {
+                "type": "uri",
+                "value": "http://ncbi.nlm.nih.gov/medgen/C0268242"
+              },
+              "interpretation": {
+                "type": "literal",
+                "value": "Likely pathogenic"
+              }
+            },
+            {
+              "variation_id": {
+                "type": "literal",
+                "value": "813421"
+              },
+              "title": {
+                "type": "literal",
+                "value": "NM_000543.5(SMPD1):c.1382_1383del (p.His461fs)"
+              },
+              "condition": {
+                "type": "literal",
+                "value": "Niemann-Pick disease, type A"
+              },
+              "clinvar": {
+                "type": "uri",
+                "value": "http://ncbi.nlm.nih.gov/clinvar/variation/813421"
+              },
+              "vcv": {
+                "type": "literal",
+                "value": "VCV000813421"
+              },
+              "med_id": {
+                "type": "uri",
+                "value": "http://ncbi.nlm.nih.gov/medgen/C0268242"
+              },
+              "interpretation": {
+                "type": "literal",
+                "value": "Pathogenic"
+              }
+            },
+            {
+              "variation_id": {
+                "type": "literal",
+                "value": "813474"
+              },
+              "title": {
+                "type": "literal",
+                "value": "NM_000543.5(SMPD1):c.107_116delinsCGC (p.Val36fs)"
+              },
+              "condition": {
+                "type": "literal",
+                "value": "Niemann-Pick disease, type A"
+              },
+              "clinvar": {
+                "type": "uri",
+                "value": "http://ncbi.nlm.nih.gov/clinvar/variation/813474"
+              },
+              "vcv": {
+                "type": "literal",
+                "value": "VCV000813474"
+              },
+              "med_id": {
+                "type": "uri",
+                "value": "http://ncbi.nlm.nih.gov/medgen/C0268242"
+              },
+              "interpretation": {
+                "type": "literal",
+                "value": "Likely pathogenic"
+              }
+            },
+            {
+              "variation_id": {
+                "type": "literal",
+                "value": "857473"
+              },
+              "title": {
+                "type": "literal",
+                "value": "NM_000543.5(SMPD1):c.1122C>G (p.Tyr374Ter)"
+              },
+              "condition": {
+                "type": "literal",
+                "value": "Niemann-Pick disease, type A"
+              },
+              "clinvar": {
+                "type": "uri",
+                "value": "http://ncbi.nlm.nih.gov/clinvar/variation/857473"
+              },
+              "vcv": {
+                "type": "literal",
+                "value": "VCV000857473"
+              },
+              "med_id": {
+                "type": "uri",
+                "value": "http://ncbi.nlm.nih.gov/medgen/C0268242"
+              },
+              "interpretation": {
+                "type": "literal",
+                "value": "Pathogenic"
+              }
+            },
+            {
+              "variation_id": {
+                "type": "literal",
+                "value": "1173970"
+              },
+              "title": {
+                "type": "literal",
+                "value": "NM_000543.5(SMPD1):c.1088T>G (p.Leu363Arg)"
+              },
+              "condition": {
+                "type": "literal",
+                "value": "Niemann-Pick disease, type A"
+              },
+              "clinvar": {
+                "type": "uri",
+                "value": "http://ncbi.nlm.nih.gov/clinvar/variation/1173970"
+              },
+              "vcv": {
+                "type": "literal",
+                "value": "VCV001173970"
+              },
+              "med_id": {
+                "type": "uri",
+                "value": "http://ncbi.nlm.nih.gov/medgen/C0268242"
+              },
+              "interpretation": {
+                "type": "literal",
+                "value": "Pathogenic"
+              }
+            },
+            {
+              "variation_id": {
+                "type": "literal",
+                "value": "1721487"
+              },
+              "title": {
+                "type": "literal",
+                "value": "NM_000543.5(SMPD1):c.1410T>A (p.Asp470Glu)"
+              },
+              "condition": {
+                "type": "literal",
+                "value": "Niemann-Pick disease, type A"
+              },
+              "clinvar": {
+                "type": "uri",
+                "value": "http://ncbi.nlm.nih.gov/clinvar/variation/1721487"
+              },
+              "vcv": {
+                "type": "literal",
+                "value": "VCV001721487"
+              },
+              "med_id": {
+                "type": "uri",
+                "value": "http://ncbi.nlm.nih.gov/medgen/C0268242"
+              },
+              "interpretation": {
+                "type": "literal",
+                "value": "Uncertain significance"
+              }
+            },
+            {
+              "variation_id": {
+                "type": "literal",
+                "value": "969162"
+              },
+              "title": {
+                "type": "literal",
+                "value": "NM_000543.5(SMPD1):c.1380del (p.His461fs)"
+              },
+              "condition": {
+                "type": "literal",
+                "value": "Niemann-Pick disease, type A"
+              },
+              "clinvar": {
+                "type": "uri",
+                "value": "http://ncbi.nlm.nih.gov/clinvar/variation/969162"
+              },
+              "vcv": {
+                "type": "literal",
+                "value": "VCV000969162"
+              },
+              "med_id": {
+                "type": "uri",
+                "value": "http://ncbi.nlm.nih.gov/medgen/C0268242"
+              },
+              "interpretation": {
+                "type": "literal",
+                "value": "Pathogenic"
+              }
+            }
+          ]
+        }
+      },
+      "count": 7,
+      "unique": 7
+    },
+    {
+      "name": "clinvar_only",
+      "query": "PREFIX cvo:    <http://purl.jp/bio/10/clinvar/>\nPREFIX dct:    <http://purl.org/dc/terms/>\nPREFIX medgen: <http://ncbi.nlm.nih.gov/medgen/>\nPREFIX rdfs:   <http://www.w3.org/2000/01/rdf-schema#>\nPREFIX sio:    <http://semanticscience.org/resource/>\nPREFIX tgvo:   <http://togovar.biosciencedbc.jp/vocabulary/>\n\nSELECT DISTINCT ?variation_id ?tgv_id ?rs_id ?variant ?title ?condition ?clinvar ?vcv ?type ?med_id ?interpretation\nWHERE {\n  VALUES ?med_id { <http://ncbi.nlm.nih.gov/medgen/C0268242> } \n\n  GRAPH <http://togovar.org/clinvar> {\n    ?med_id ^dct:references ?_classified_condition .\n\n    ?_classified_condition ^cvo:classified_condition/^cvo:classified_condition_list ?_rcv ;\n      rdfs:label ?condition .\n\n    ?_rcv cvo:rcv_classifications/cvo:germline_classification/cvo:description/cvo:description ?interpretation ;\n      cvo:rcv_classifications/cvo:germline_classification/cvo:description/cvo:date_last_evaluated ?last_evaluated ;\n      ^cvo:rcv_accession/^cvo:rcv_list/^cvo:classified_record ?clinvar .\n\n    ?clinvar a cvo:VariationArchiveType ;\n      rdfs:label ?title ;\n      cvo:accession ?vcv ;\n      cvo:variation_id ?vid .\n     # cvo:interpreted_record/cvo:review_status ?review_status ;\n     # cvo:interpreted_record/sio:SIO_000628/dct:references ?dbsnp .\n\n    BIND(STR(?vid) AS ?variation_id)\nFILTER(STR(?vid) IN (\"371347\",\"813421\",\"813474\",\"857473\",\"1173970\",\"1721487\",\"969162\"))\n\n    # ?dbsnp rdfs:seeAlso ?rs_id ;\n    #  dct:source ?dbname .\n    # FILTER(?dbname IN (\"dbSNP\"))\n  }\n\n\n}",
+      "error": "<!DOCTYPE HTML PUBLIC \"-//IETF//DTD HTML 2.0//EN\">\n<html><head>\n<title>406 Not Acceptable</title>\n</head><body>\n<h1>406 Not Acceptable</h1>\n<p>An appropriate representation of the requested resource sparql could not be found on this server.</p>\nAvailable variant(s):\n<ul>\n<li><a href=\"sparql\">sparql</a> , type text/html, charset UTF-8</li>\n</ul>\n<script>(function(){function c(){var b=a.contentDocument||(a.contentWindow&&a.contentWindow.document);if(b){var d=b.createElement('script');d.innerHTML=\"window.__CF$cv$params={r:'a46ba7d0aa0b2716',t:'MTc5MTM2Mjk5Nw=='};var a=document.createElement('script');a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);\";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('iframe');a.height=1;a.width=1;a.style.position='absolute';a.style.top=0;a.style.left=0;a.style.border='none';a.style.visibility='hidden';document.body.appendChild(a);if('loading'!==document.readyState)c();else if(window.addEventListener)document.addEventListener('DOMContentLoaded',c);else{var e=document.onreadystatechange||function(){};document.onreadystatechange=function(b){e(b);'loading'!==document.readyState&&(document.onreadystatechange=e,c())}}}})();</script></body></html>\n"
+    },
+    {
+      "name": "internal_fields",
+      "query": "PREFIX cvo:    <http://purl.jp/bio/10/clinvar/>\nPREFIX dct:    <http://purl.org/dc/terms/>\nPREFIX medgen: <http://ncbi.nlm.nih.gov/medgen/>\nPREFIX rdfs:   <http://www.w3.org/2000/01/rdf-schema#>\nPREFIX sio:    <http://semanticscience.org/resource/>\nPREFIX tgvo:   <http://togovar.biosciencedbc.jp/vocabulary/>\n\nSELECT DISTINCT ?_rcv ?last_evaluated ?_classified_condition ?variation_id ?tgv_id ?rs_id ?variant ?title ?condition ?clinvar ?vcv ?type ?med_id ?interpretation\nWHERE {\n  VALUES ?med_id { <http://ncbi.nlm.nih.gov/medgen/C0268242> } \n\n  GRAPH <http://togovar.org/clinvar> {\n    ?med_id ^dct:references ?_classified_condition .\n\n    ?_classified_condition ^cvo:classified_condition/^cvo:classified_condition_list ?_rcv ;\n      rdfs:label ?condition .\n\n    ?_rcv cvo:rcv_classifications/cvo:germline_classification/cvo:description/cvo:description ?interpretation ;\n      cvo:rcv_classifications/cvo:germline_classification/cvo:description/cvo:date_last_evaluated ?last_evaluated ;\n      ^cvo:rcv_accession/^cvo:rcv_list/^cvo:classified_record ?clinvar .\n\n    ?clinvar a cvo:VariationArchiveType ;\n      rdfs:label ?title ;\n      cvo:accession ?vcv ;\n      cvo:variation_id ?vid .\n     # cvo:interpreted_record/cvo:review_status ?review_status ;\n     # cvo:interpreted_record/sio:SIO_000628/dct:references ?dbsnp .\n\n    BIND(STR(?vid) AS ?variation_id)\nFILTER(STR(?vid) IN (\"371347\",\"813421\",\"813474\",\"857473\",\"1173970\",\"1721487\",\"969162\"))\n\n    # ?dbsnp rdfs:seeAlso ?rs_id ;\n    #  dct:source ?dbname .\n    # FILTER(?dbname IN (\"dbSNP\"))\n  }\n\n  OPTIONAL{ \n    GRAPH <http://togovar.org/variant> {\n      ?variant dct:identifier ?variation_id .\n      FILTER REGEX(?variation_id, \"^[0-9]+$\")\n\n      ?variant dct:identifier ?tgv_id ;\n               rdf:type ?type.\n      FILTER(!REGEX(?tgv_id, \"^[0-9]+$\")).  # tgv_id like 'tgv0001' or '1-1234-A-C'\n    }\n  }\n}\n                    \n",
+      "response": {
+        "head": {
+          "link": [],
+          "vars": [
+            "_rcv",
+            "last_evaluated",
+            "_classified_condition",
+            "variation_id",
+            "tgv_id",
+            "rs_id",
+            "variant",
+            "title",
+            "condition",
+            "clinvar",
+            "vcv",
+            "type",
+            "med_id",
+            "interpretation"
+          ]
+        },
+        "results": {
+          "distinct": false,
+          "ordered": true,
+          "bindings": [
+            {
+              "_rcv": {
+                "type": "bnode",
+                "value": "nodeID://b27741449"
+              },
+              "last_evaluated": {
+                "type": "typed-literal",
+                "datatype": "http://www.w3.org/2001/XMLSchema#date",
+                "value": "2016-08-31"
+              },
+              "_classified_condition": {
+                "type": "bnode",
+                "value": "nodeID://b27741451"
+              },
+              "variation_id": {
+                "type": "literal",
+                "value": "371347"
+              },
+              "title": {
+                "type": "literal",
+                "value": "NM_000543.5(SMPD1):c.1497_1498del (p.Tyr500fs)"
+              },
+              "condition": {
+                "type": "literal",
+                "value": "Niemann-Pick disease, type A"
+              },
+              "clinvar": {
+                "type": "uri",
+                "value": "http://ncbi.nlm.nih.gov/clinvar/variation/371347"
+              },
+              "vcv": {
+                "type": "literal",
+                "value": "VCV000371347"
+              },
+              "med_id": {
+                "type": "uri",
+                "value": "http://ncbi.nlm.nih.gov/medgen/C0268242"
+              },
+              "interpretation": {
+                "type": "literal",
+                "value": "Likely pathogenic"
+              }
+            },
+            {
+              "_rcv": {
+                "type": "bnode",
+                "value": "nodeID://b27741467"
+              },
+              "last_evaluated": {
+                "type": "typed-literal",
+                "datatype": "http://www.w3.org/2001/XMLSchema#date",
+                "value": "2024-03-14"
+              },
+              "_classified_condition": {
+                "type": "bnode",
+                "value": "nodeID://b27741469"
+              },
+              "variation_id": {
+                "type": "literal",
+                "value": "371347"
+              },
+              "title": {
+                "type": "literal",
+                "value": "NM_000543.5(SMPD1):c.1497_1498del (p.Tyr500fs)"
+              },
+              "condition": {
+                "type": "literal",
+                "value": "Niemann-Pick disease, type A"
+              },
+              "clinvar": {
+                "type": "uri",
+                "value": "http://ncbi.nlm.nih.gov/clinvar/variation/371347"
+              },
+              "vcv": {
+                "type": "literal",
+                "value": "VCV000371347"
+              },
+              "med_id": {
+                "type": "uri",
+                "value": "http://ncbi.nlm.nih.gov/medgen/C0268242"
+              },
+              "interpretation": {
+                "type": "literal",
+                "value": "Likely pathogenic"
+              }
+            },
+            {
+              "_rcv": {
+                "type": "bnode",
+                "value": "nodeID://b47116331"
+              },
+              "last_evaluated": {
+                "type": "typed-literal",
+                "datatype": "http://www.w3.org/2001/XMLSchema#date",
+                "value": "2025-04-19"
+              },
+              "_classified_condition": {
+                "type": "bnode",
+                "value": "nodeID://b47116336"
+              },
+              "variation_id": {
+                "type": "literal",
+                "value": "813421"
+              },
+              "title": {
+                "type": "literal",
+                "value": "NM_000543.5(SMPD1):c.1382_1383del (p.His461fs)"
+              },
+              "condition": {
+                "type": "literal",
+                "value": "Niemann-Pick disease, type A"
+              },
+              "clinvar": {
+                "type": "uri",
+                "value": "http://ncbi.nlm.nih.gov/clinvar/variation/813421"
+              },
+              "vcv": {
+                "type": "literal",
+                "value": "VCV000813421"
+              },
+              "med_id": {
+                "type": "uri",
+                "value": "http://ncbi.nlm.nih.gov/medgen/C0268242"
+              },
+              "interpretation": {
+                "type": "literal",
+                "value": "Pathogenic"
+              }
+            },
+            {
+              "_rcv": {
+                "type": "bnode",
+                "value": "nodeID://b47116353"
+              },
+              "last_evaluated": {
+                "type": "typed-literal",
+                "datatype": "http://www.w3.org/2001/XMLSchema#date",
+                "value": "2023-03-21"
+              },
+              "_classified_condition": {
+                "type": "bnode",
+                "value": "nodeID://b47116355"
+              },
+              "variation_id": {
+                "type": "literal",
+                "value": "813421"
+              },
+              "title": {
+                "type": "literal",
+                "value": "NM_000543.5(SMPD1):c.1382_1383del (p.His461fs)"
+              },
+              "condition": {
+                "type": "literal",
+                "value": "Niemann-Pick disease, type A"
+              },
+              "clinvar": {
+                "type": "uri",
+                "value": "http://ncbi.nlm.nih.gov/clinvar/variation/813421"
+              },
+              "vcv": {
+                "type": "literal",
+                "value": "VCV000813421"
+              },
+              "med_id": {
+                "type": "uri",
+                "value": "http://ncbi.nlm.nih.gov/medgen/C0268242"
+              },
+              "interpretation": {
+                "type": "literal",
+                "value": "Pathogenic"
+              }
+            },
+            {
+              "_rcv": {
+                "type": "bnode",
+                "value": "nodeID://b47123006"
+              },
+              "last_evaluated": {
+                "type": "typed-literal",
+                "datatype": "http://www.w3.org/2001/XMLSchema#date",
+                "value": "2024-03-25"
+              },
+              "_classified_condition": {
+                "type": "bnode",
+                "value": "nodeID://b47123008"
+              },
+              "variation_id": {
+                "type": "literal",
+                "value": "813474"
+              },
+              "title": {
+                "type": "literal",
+                "value": "NM_000543.5(SMPD1):c.107_116delinsCGC (p.Val36fs)"
+              },
+              "condition": {
+                "type": "literal",
+                "value": "Niemann-Pick disease, type A"
+              },
+              "clinvar": {
+                "type": "uri",
+                "value": "http://ncbi.nlm.nih.gov/clinvar/variation/813474"
+              },
+              "vcv": {
+                "type": "literal",
+                "value": "VCV000813474"
+              },
+              "med_id": {
+                "type": "uri",
+                "value": "http://ncbi.nlm.nih.gov/medgen/C0268242"
+              },
+              "interpretation": {
+                "type": "literal",
+                "value": "Likely pathogenic"
+              }
+            },
+            {
+              "_rcv": {
+                "type": "bnode",
+                "value": "nodeID://b47123049"
+              },
+              "last_evaluated": {
+                "type": "typed-literal",
+                "datatype": "http://www.w3.org/2001/XMLSchema#date",
+                "value": "2024-01-20"
+              },
+              "_classified_condition": {
+                "type": "bnode",
+                "value": "nodeID://b47123053"
+              },
+              "variation_id": {
+                "type": "literal",
+                "value": "813474"
+              },
+              "title": {
+                "type": "literal",
+                "value": "NM_000543.5(SMPD1):c.107_116delinsCGC (p.Val36fs)"
+              },
+              "condition": {
+                "type": "literal",
+                "value": "Niemann-Pick disease, type A"
+              },
+              "clinvar": {
+                "type": "uri",
+                "value": "http://ncbi.nlm.nih.gov/clinvar/variation/813474"
+              },
+              "vcv": {
+                "type": "literal",
+                "value": "VCV000813474"
+              },
+              "med_id": {
+                "type": "uri",
+                "value": "http://ncbi.nlm.nih.gov/medgen/C0268242"
+              },
+              "interpretation": {
+                "type": "literal",
+                "value": "Likely pathogenic"
+              }
+            },
+            {
+              "_rcv": {
+                "type": "bnode",
+                "value": "nodeID://b48740037"
+              },
+              "last_evaluated": {
+                "type": "typed-literal",
+                "datatype": "http://www.w3.org/2001/XMLSchema#date",
+                "value": "2019-03-15"
+              },
+              "_classified_condition": {
+                "type": "bnode",
+                "value": "nodeID://b48740041"
+              },
+              "variation_id": {
+                "type": "literal",
+                "value": "857473"
+              },
+              "title": {
+                "type": "literal",
+                "value": "NM_000543.5(SMPD1):c.1122C>G (p.Tyr374Ter)"
+              },
+              "condition": {
+                "type": "literal",
+                "value": "Niemann-Pick disease, type A"
+              },
+              "clinvar": {
+                "type": "uri",
+                "value": "http://ncbi.nlm.nih.gov/clinvar/variation/857473"
+              },
+              "vcv": {
+                "type": "literal",
+                "value": "VCV000857473"
+              },
+              "med_id": {
+                "type": "uri",
+                "value": "http://ncbi.nlm.nih.gov/medgen/C0268242"
+              },
+              "interpretation": {
+                "type": "literal",
+                "value": "Pathogenic"
+              }
+            },
+            {
+              "_rcv": {
+                "type": "bnode",
+                "value": "nodeID://b48740063"
+              },
+              "last_evaluated": {
+                "type": "typed-literal",
+                "datatype": "http://www.w3.org/2001/XMLSchema#date",
+                "value": "2025-03-06"
+              },
+              "_classified_condition": {
+                "type": "bnode",
+                "value": "nodeID://b48740068"
+              },
+              "variation_id": {
+                "type": "literal",
+                "value": "857473"
+              },
+              "title": {
+                "type": "literal",
+                "value": "NM_000543.5(SMPD1):c.1122C>G (p.Tyr374Ter)"
+              },
+              "condition": {
+                "type": "literal",
+                "value": "Niemann-Pick disease, type A"
+              },
+              "clinvar": {
+                "type": "uri",
+                "value": "http://ncbi.nlm.nih.gov/clinvar/variation/857473"
+              },
+              "vcv": {
+                "type": "literal",
+                "value": "VCV000857473"
+              },
+              "med_id": {
+                "type": "uri",
+                "value": "http://ncbi.nlm.nih.gov/medgen/C0268242"
+              },
+              "interpretation": {
+                "type": "literal",
+                "value": "Pathogenic"
+              }
+            },
+            {
+              "_rcv": {
+                "type": "bnode",
+                "value": "nodeID://b61133518"
+              },
+              "last_evaluated": {
+                "type": "typed-literal",
+                "datatype": "http://www.w3.org/2001/XMLSchema#date",
+                "value": "2021-04-25"
+              },
+              "_classified_condition": {
+                "type": "bnode",
+                "value": "nodeID://b61133520"
+              },
+              "variation_id": {
+                "type": "literal",
+                "value": "1173970"
+              },
+              "title": {
+                "type": "literal",
+                "value": "NM_000543.5(SMPD1):c.1088T>G (p.Leu363Arg)"
+              },
+              "condition": {
+                "type": "literal",
+                "value": "Niemann-Pick disease, type A"
+              },
+              "clinvar": {
+                "type": "uri",
+                "value": "http://ncbi.nlm.nih.gov/clinvar/variation/1173970"
+              },
+              "vcv": {
+                "type": "literal",
+                "value": "VCV001173970"
+              },
+              "med_id": {
+                "type": "uri",
+                "value": "http://ncbi.nlm.nih.gov/medgen/C0268242"
+              },
+              "interpretation": {
+                "type": "literal",
+                "value": "Pathogenic"
+              }
+            },
+            {
+              "_rcv": {
+                "type": "bnode",
+                "value": "nodeID://b61133532"
+              },
+              "last_evaluated": {
+                "type": "typed-literal",
+                "datatype": "http://www.w3.org/2001/XMLSchema#date",
+                "value": "2023-09-13"
+              },
+              "_classified_condition": {
+                "type": "bnode",
+                "value": "nodeID://b61133536"
+              },
+              "variation_id": {
+                "type": "literal",
+                "value": "1173970"
+              },
+              "title": {
+                "type": "literal",
+                "value": "NM_000543.5(SMPD1):c.1088T>G (p.Leu363Arg)"
+              },
+              "condition": {
+                "type": "literal",
+                "value": "Niemann-Pick disease, type A"
+              },
+              "clinvar": {
+                "type": "uri",
+                "value": "http://ncbi.nlm.nih.gov/clinvar/variation/1173970"
+              },
+              "vcv": {
+                "type": "literal",
+                "value": "VCV001173970"
+              },
+              "med_id": {
+                "type": "uri",
+                "value": "http://ncbi.nlm.nih.gov/medgen/C0268242"
+              },
+              "interpretation": {
+                "type": "literal",
+                "value": "Pathogenic"
+              }
+            },
+            {
+              "_rcv": {
+                "type": "bnode",
+                "value": "nodeID://b80984264"
+              },
+              "last_evaluated": {
+                "type": "typed-literal",
+                "datatype": "http://www.w3.org/2001/XMLSchema#date",
+                "value": "2022-10-12"
+              },
+              "_classified_condition": {
+                "type": "bnode",
+                "value": "nodeID://b80984268"
+              },
+              "variation_id": {
+                "type": "literal",
+                "value": "1721487"
+              },
+              "title": {
+                "type": "literal",
+                "value": "NM_000543.5(SMPD1):c.1410T>A (p.Asp470Glu)"
+              },
+              "condition": {
+                "type": "literal",
+                "value": "Niemann-Pick disease, type A"
+              },
+              "clinvar": {
+                "type": "uri",
+                "value": "http://ncbi.nlm.nih.gov/clinvar/variation/1721487"
+              },
+              "vcv": {
+                "type": "literal",
+                "value": "VCV001721487"
+              },
+              "med_id": {
+                "type": "uri",
+                "value": "http://ncbi.nlm.nih.gov/medgen/C0268242"
+              },
+              "interpretation": {
+                "type": "literal",
+                "value": "Uncertain significance"
+              }
+            },
+            {
+              "_rcv": {
+                "type": "bnode",
+                "value": "nodeID://b80984298"
+              },
+              "last_evaluated": {
+                "type": "typed-literal",
+                "datatype": "http://www.w3.org/2001/XMLSchema#date",
+                "value": "2025-05-02"
+              },
+              "_classified_condition": {
+                "type": "bnode",
+                "value": "nodeID://b80984306"
+              },
+              "variation_id": {
+                "type": "literal",
+                "value": "1721487"
+              },
+              "title": {
+                "type": "literal",
+                "value": "NM_000543.5(SMPD1):c.1410T>A (p.Asp470Glu)"
+              },
+              "condition": {
+                "type": "literal",
+                "value": "Niemann-Pick disease, type A"
+              },
+              "clinvar": {
+                "type": "uri",
+                "value": "http://ncbi.nlm.nih.gov/clinvar/variation/1721487"
+              },
+              "vcv": {
+                "type": "literal",
+                "value": "VCV001721487"
+              },
+              "med_id": {
+                "type": "uri",
+                "value": "http://ncbi.nlm.nih.gov/medgen/C0268242"
+              },
+              "interpretation": {
+                "type": "literal",
+                "value": "Uncertain significance"
+              }
+            },
+            {
+              "_rcv": {
+                "type": "bnode",
+                "value": "nodeID://b307718788"
+              },
+              "last_evaluated": {
+                "type": "typed-literal",
+                "datatype": "http://www.w3.org/2001/XMLSchema#date",
+                "value": "2022-04-14"
+              },
+              "_classified_condition": {
+                "type": "bnode",
+                "value": "nodeID://b307718793"
+              },
+              "variation_id": {
+                "type": "literal",
+                "value": "969162"
+              },
+              "title": {
+                "type": "literal",
+                "value": "NM_000543.5(SMPD1):c.1380del (p.His461fs)"
+              },
+              "condition": {
+                "type": "literal",
+                "value": "Niemann-Pick disease, type A"
+              },
+              "clinvar": {
+                "type": "uri",
+                "value": "http://ncbi.nlm.nih.gov/clinvar/variation/969162"
+              },
+              "vcv": {
+                "type": "literal",
+                "value": "VCV000969162"
+              },
+              "med_id": {
+                "type": "uri",
+                "value": "http://ncbi.nlm.nih.gov/medgen/C0268242"
+              },
+              "interpretation": {
+                "type": "literal",
+                "value": "Pathogenic"
+              }
+            },
+            {
+              "_rcv": {
+                "type": "bnode",
+                "value": "nodeID://b307718838"
+              },
+              "last_evaluated": {
+                "type": "typed-literal",
+                "datatype": "http://www.w3.org/2001/XMLSchema#date",
+                "value": "2017-03-17"
+              },
+              "_classified_condition": {
+                "type": "bnode",
+                "value": "nodeID://b307718840"
+              },
+              "variation_id": {
+                "type": "literal",
+                "value": "969162"
+              },
+              "title": {
+                "type": "literal",
+                "value": "NM_000543.5(SMPD1):c.1380del (p.His461fs)"
+              },
+              "condition": {
+                "type": "literal",
+                "value": "Niemann-Pick disease, type A"
+              },
+              "clinvar": {
+                "type": "uri",
+                "value": "http://ncbi.nlm.nih.gov/clinvar/variation/969162"
+              },
+              "vcv": {
+                "type": "literal",
+                "value": "VCV000969162"
+              },
+              "med_id": {
+                "type": "uri",
+                "value": "http://ncbi.nlm.nih.gov/medgen/C0268242"
+              },
+              "interpretation": {
+                "type": "literal",
+                "value": "Pathogenic"
+              }
+            }
+          ]
+        }
+      },
+      "count": 14,
+      "unique": 14
+    },
+    {
+      "name": "outer_distinct",
+      "query": "PREFIX cvo:    <http://purl.jp/bio/10/clinvar/>\nPREFIX dct:    <http://purl.org/dc/terms/>\nPREFIX medgen: <http://ncbi.nlm.nih.gov/medgen/>\nPREFIX rdfs:   <http://www.w3.org/2000/01/rdf-schema#>\nPREFIX sio:    <http://semanticscience.org/resource/>\nPREFIX tgvo:   <http://togovar.biosciencedbc.jp/vocabulary/>\n\nSELECT DISTINCT * WHERE { { SELECT DISTINCT ?variation_id ?tgv_id ?rs_id ?variant ?title ?condition ?clinvar ?vcv ?type ?med_id ?interpretation\nWHERE {\n  VALUES ?med_id { <http://ncbi.nlm.nih.gov/medgen/C0268242> } \n\n  GRAPH <http://togovar.org/clinvar> {\n    ?med_id ^dct:references ?_classified_condition .\n\n    ?_classified_condition ^cvo:classified_condition/^cvo:classified_condition_list ?_rcv ;\n      rdfs:label ?condition .\n\n    ?_rcv cvo:rcv_classifications/cvo:germline_classification/cvo:description/cvo:description ?interpretation ;\n      cvo:rcv_classifications/cvo:germline_classification/cvo:description/cvo:date_last_evaluated ?last_evaluated ;\n      ^cvo:rcv_accession/^cvo:rcv_list/^cvo:classified_record ?clinvar .\n\n    ?clinvar a cvo:VariationArchiveType ;\n      rdfs:label ?title ;\n      cvo:accession ?vcv ;\n      cvo:variation_id ?vid .\n     # cvo:interpreted_record/cvo:review_status ?review_status ;\n     # cvo:interpreted_record/sio:SIO_000628/dct:references ?dbsnp .\n\n    BIND(STR(?vid) AS ?variation_id)\nFILTER(STR(?vid) IN (\"371347\",\"813421\",\"813474\",\"857473\",\"1173970\",\"1721487\",\"969162\"))\n\n    # ?dbsnp rdfs:seeAlso ?rs_id ;\n    #  dct:source ?dbname .\n    # FILTER(?dbname IN (\"dbSNP\"))\n  }\n\n  OPTIONAL{ \n    GRAPH <http://togovar.org/variant> {\n      ?variant dct:identifier ?variation_id .\n      FILTER REGEX(?variation_id, \"^[0-9]+$\")\n\n      ?variant dct:identifier ?tgv_id ;\n               rdf:type ?type.\n      FILTER(!REGEX(?tgv_id, \"^[0-9]+$\")).  # tgv_id like 'tgv0001' or '1-1234-A-C'\n    }\n  }\n}\n                    \n } }",
+      "error": "<!DOCTYPE HTML PUBLIC \"-//IETF//DTD HTML 2.0//EN\">\n<html><head>\n<title>406 Not Acceptable</title>\n</head><body>\n<h1>406 Not Acceptable</h1>\n<p>An appropriate representation of the requested resource sparql could not be found on this server.</p>\nAvailable variant(s):\n<ul>\n<li><a href=\"sparql\">sparql</a> , type text/html, charset UTF-8</li>\n</ul>\n<script>(function(){function c(){var b=a.contentDocument||(a.contentWindow&&a.contentWindow.document);if(b){var d=b.createElement('script');d.innerHTML=\"window.__CF$cv$params={r:'a46ba7e0891cadb4',t:'MTc5MTM2MzAwMA=='};var a=document.createElement('script');a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);\";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('iframe');a.height=1;a.width=1;a.style.position='absolute';a.style.top=0;a.style.left=0;a.style.border='none';a.style.visibility='hidden';document.body.appendChild(a);if('loading'!==document.readyState)c();else if(window.addEventListener)document.addEventListener('DOMContentLoaded',c);else{var e=document.onreadystatechange||function(){};document.onreadystatechange=function(b){e(b);'loading'!==document.readyState&&(document.onreadystatechange=e,c())}}}})();</script></body></html>\n"
+    }
+  ]
+}

@@ -1,0 +1,62 @@
+{
+  "date": "2026-10-07T08:45:28.673Z",
+  "sha256": "f44aaefbcfb064a27c92a683afe3e205b94fb6db1922f50556f96ca9f67e1887",
+  "validation": "passed after retry",
+  "cases": [
+    {
+      "nando_id": "1200030",
+      "medgen": 2,
+      "rows": 14,
+      "uniqueClinvar": 10,
+      "withTogoVar": 8,
+      "clinvarOnly": 2,
+      "withTogoVarRows": 12,
+      "clinvarOnlyRows": 2,
+      "identicalOutputDuplicates": 0
+    },
+    {
+      "nando_id": "1200061",
+      "medgen": 1,
+      "rows": 1309,
+      "uniqueClinvar": 997,
+      "withTogoVar": 619,
+      "clinvarOnly": 378,
+      "withTogoVarRows": 912,
+      "clinvarOnlyRows": 397,
+      "identicalOutputDuplicates": 7
+    },
+    {
+      "nando_id": "1200183",
+      "medgen": 1,
+      "rows": 22,
+      "uniqueClinvar": 15,
+      "withTogoVar": 7,
+      "clinvarOnly": 8,
+      "withTogoVarRows": 14,
+      "clinvarOnlyRows": 8,
+      "identicalOutputDuplicates": 0
+    },
+    {
+      "nando_id": "9999999",
+      "medgen": 0,
+      "rows": 0,
+      "uniqueClinvar": 0,
+      "withTogoVar": 0,
+      "clinvarOnly": 0,
+      "withTogoVarRows": 0,
+      "clinvarOnlyRows": 0,
+      "identicalOutputDuplicates": 0
+    },
+    {
+      "nando_id": "",
+      "medgen": 0,
+      "rows": 0,
+      "uniqueClinvar": 0,
+      "withTogoVar": 0,
+      "clinvarOnly": 0,
+      "withTogoVarRows": 0,
+      "clinvarOnlyRows": 0,
+      "identicalOutputDuplicates": 0
+    }
+  ]
+}

@@ -1,0 +1,64 @@
+TAP version 13
+# Subtest: extracts all four executable blocks and their endpoints
+ok 1 - extracts all four executable blocks and their endpoints
+  ---
+  duration_ms: 1.062875
+  type: 'test'
+  ...
+# Subtest: MedGen mapping and empty input
+ok 2 - MedGen mapping and empty input
+  ---
+  duration_ms: 2.14125
+  type: 'test'
+  ...
+# Subtest: formats a complete ClinVar record
+ok 3 - formats a complete ClinVar record
+  ---
+  duration_ms: 0.324042
+  type: 'test'
+  ...
+# Subtest: missing fields produce empty strings without exceptions
+ok 4 - missing fields produce empty strings without exceptions
+  ---
+  duration_ms: 0.399208
+  type: 'test'
+  ...
+# Subtest: record without TogoVar ID retains ClinVar fields and position
+ok 5 - record without TogoVar ID retains ClinVar fields and position
+  ---
+  duration_ms: 0.26675
+  type: 'test'
+  ...
+# Subtest: coordinate-form TogoVar IDs are retained with their links
+ok 6 - coordinate-form TogoVar IDs are retained with their links
+  ---
+  duration_ms: 0.229333
+  type: 'test'
+  ...
+# Subtest: ClinVar-only records retain clinical fields while TogoVar fields are empty
+ok 7 - ClinVar-only records retain clinical fields while TogoVar fields are empty
+  ---
+  duration_ms: 0.272417
+  type: 'test'
+  ...
+# Subtest: unknown coordinate format and unmapped MedGen are safe
+ok 8 - unknown coordinate format and unmapped MedGen are safe
+  ---
+  duration_ms: 0.190875
+  type: 'test'
+  ...
+# Subtest: renders populated and empty VALUES without residual templates
+ok 9 - renders populated and empty VALUES without residual templates
+  ---
+  duration_ms: 0.273916
+  type: 'test'
+  ...
+1..9
+# tests 9
+# suites 0
+# pass 9
+# fail 0
+# cancelled 0
+# skipped 0
+# todo 0
+# duration_ms 70.342334

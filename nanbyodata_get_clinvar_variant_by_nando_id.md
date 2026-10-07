@@ -4,7 +4,7 @@
 
 * `nando_id` NANDO ID
   * default:
-  * examples: 1200030（ギランバレー症候群、TogoVarにバリアントがない例を含む）、1200183 (TogoVar(tgv40123502)が存在する例)
+  * examples: 1200030（ギランバレー症候群、TogoVarのエントリがないVCV003896952とVCV000872649を含む）
   
 ## Endpoint
 
@@ -142,4 +142,4 @@ WHERE {
 - Togovarのエンドポイントを利用しています。
 - SPARQListの大元はTogovarから頂いています。
 - NANDOからMONDO,MONDOからMedGenのIDに変更して、Clinvarのデータを取得しています。
-- 編集：高月（2024/01/12)
+- 編集：高月（2024/01/12）

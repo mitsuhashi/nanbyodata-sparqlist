@@ -140,3 +140,33 @@ test('count links use the matched REST ID and do not invent an ID when missing',
   assert.equal(unmatched.genotype_count_alt_ref, 'No Data');
   assert.equal(unmatched.genotype_count_alt_ref_link, 'https://grch38.togovar.org/variant/tgv999#frequency');
 });
+
+for (const name of ['togovar', 'clinvar_togovar']) {
+  const contextFor = positions => name === 'togovar'
+    ? {nando2mondo2mgend: result(positions.map(position => ({...mgend, position: {value: String(position)}})))}
+    : {medgen2clinvar2togovar: result(positions.map(position => binding({variant: `http://identifiers.org/hco/1/GRCh38#${position}-A-G`})))};
+  test(`${name} bounds concurrent requests and retains every location for large diseases`, async () => {
+    let active = 0, peak = 0;
+    const seen = [];
+    const positions = Array.from({length: 661}, (_, i) => i + 100);
+    const rows = await evaluate(name, contextFor([...positions, positions[0]]), async (_, options) => {
+      const {location} = JSON.parse(options.body).query;
+      active++; peak = Math.max(peak, active);
+      assert(active <= 4, 'too many simultaneous REST requests');
+      seen.push(location.position);
+      return {ok: true, json: async () => {
+        await new Promise(resolve => setImmediate(resolve));
+        active--;
+        return {data: [{id: `tgv${location.position}`}]};
+      }};
+    });
+    assert.equal(peak, 4);
+    assert.equal(seen.length, 661);
+    for (const position of positions) assert.equal(rows[`1:${position}`][0].id, `tgv${position}`);
+  });
+  test(`${name} reports failing coordinates instead of treating fetch failure as No Data`, async () => {
+    await assert.rejects(evaluate(name, contextFor([100]), async () => {
+      throw new TypeError('fetch failed');
+    }), /TogoVar search failed for 1:100: fetch failed/);
+  });
+}

@@ -10,8 +10,10 @@ const columns = {
     { id: "position", label: "Chr:Position" },
     { id: "tgv_id", label: "TogoVar_ID", link: "tgv_link" },
     { id: "MedGen_id", label: "MedGen_ID", link: "MedGen_link" },
-    { id: "mondo_id", label: "MONDO_ID", link: "mondo" }
-
+    { id: "mondo_id", label: "MONDO_ID", link: "mondo" },
+    { id: "genotype_count_alt_alt", label: "Alt/Alt count", link: "genotype_count_alt_alt_link" },
+    { id: "genotype_count_alt_ref", label: "Ref/Alt count", link: "genotype_count_alt_ref_link" },
+    { id: "mgend_id", label: "MGeND ID", link: "mgend_url" }
   ],
   mgend: [
     { id: "hgvs", label: "HGVS" },
@@ -70,7 +72,7 @@ async function fetchVariants(nandoId, target) {
     throw new Error(`${target} response was not an array`);
   }
 
-  // Frequency links are view metadata; the API response does not include them.
+  // Preserve matched ClinVar links; derive links from the row ID when absent.
   return data.map(row => {
     const frequencyLink = /^tgv\d+$/.test(row.tgv_id || "")
       ? `https://grch38.togovar.org/variant/${row.tgv_id}#frequency`

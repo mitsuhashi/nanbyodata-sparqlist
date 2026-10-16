@@ -36,10 +36,10 @@ for (const fixture of fixtures) {
       });
       const [row] = JSON.parse(JSON.stringify(evaluate('Output', {variants})));
       const example = examples[target === 'clinvar' ? 0 : 1];
-      assert.deepEqual(Object.keys(row).sort(), Object.keys(example).sort());
+      assert.deepEqual(Object.keys(row), Object.keys(example));
       for (const key of Object.keys(example)) assert.deepEqual(row[key], internal[0][key]);
       assert.equal('ClinVar_id' in row, false);
-      if (target === 'mgend') {
+      {
         for (const [key, expected] of Object.entries(fixture.expected)) {
           assert.equal(row[key], matched ? expected : 'No Data');
         }

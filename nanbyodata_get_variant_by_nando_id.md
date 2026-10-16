@@ -200,7 +200,7 @@ WHERE {
 
 ## `togovar`
 
-MGeND 由来のバリアント位置を使って TogoVar REST API を呼びます。SPARQL だけでは取れない TogoVar ID、MGeND URL、ClinVar URL、genotype count などを補完するために使います。
+MGeND 由来のバリアント位置を使って TogoVar REST API を呼びます。SPARQL だけでは取れない TogoVar ID、MGeND URL、ClinVar URL、genotype count などを補完するために使います。同時リクエストは最大4件に制限します。
 
 ```javascript
 async ({nando2mondo2mgend}) => {
@@ -213,7 +213,7 @@ async ({nando2mondo2mgend}) => {
     return [`${chromosome}:${position}`, {chromosome, position}];
   }).filter(Boolean)).values()];
 
-  const responses = await Promise.all(locations.map(async location => {
+  const fetchLocation = async location => {
     const response = await fetch('https://grch38.togovar.org/api/search/variant?stat=0', {
       method: 'POST',
       headers: {
@@ -232,15 +232,32 @@ async ({nando2mondo2mgend}) => {
 
     const body = await response.json();
     return [`${location.chromosome}:${location.position}`, body.data || []];
-  }));
+  };
 
+  // Large diseases can have hundreds of locations. Keep connections bounded.
+  const responses = new Array(locations.length);
+  let next = 0;
+  let failed = false;
+  const worker = async () => {
+    while (!failed && next < locations.length) {
+      const index = next++;
+      const location = locations[index];
+      try {
+        responses[index] = await fetchLocation(location);
+      } catch (error) {
+        failed = true;
+        throw new Error(`TogoVar search failed for ${location.chromosome}:${location.position}: ${error.message}`);
+      }
+    }
+  };
+  await Promise.all(Array.from({length: Math.min(4, locations.length)}, worker));
   return Object.fromEntries(responses);
 }
 ```
 
 ## `clinvar_togovar`
 
-ClinVar 由来のバリアント位置を使って TogoVar REST API を呼びます。SPARQL だけでは取れない genotype count と MGeND 外部リンクを補完するために使います。
+ClinVar 由来のバリアント位置を使って TogoVar REST API を呼びます。SPARQL だけでは取れない genotype count と MGeND 外部リンクを補完するために使います。大量の座標でも接続が集中しないよう、同時リクエストは最大4件に制限します。
 
 ```javascript
 async ({medgen2clinvar2togovar}) => {
@@ -260,7 +277,7 @@ async ({medgen2clinvar2togovar}) => {
     .filter(Boolean)
   ).values()];
 
-  const responses = await Promise.all(locations.map(async location => {
+  const fetchLocation = async location => {
     const response = await fetch('https://grch38.togovar.org/api/search/variant?stat=0', {
       method: 'POST',
       headers: {
@@ -279,8 +296,25 @@ async ({medgen2clinvar2togovar}) => {
 
     const body = await response.json();
     return [`${location.chromosome}:${location.position}`, body.data || []];
-  }));
+  };
 
+  // Large diseases can have hundreds of locations. Keep connections bounded.
+  const responses = new Array(locations.length);
+  let next = 0;
+  let failed = false;
+  const worker = async () => {
+    while (!failed && next < locations.length) {
+      const index = next++;
+      const location = locations[index];
+      try {
+        responses[index] = await fetchLocation(location);
+      } catch (error) {
+        failed = true;
+        throw new Error(`TogoVar search failed for ${location.chromosome}:${location.position}: ${error.message}`);
+      }
+    }
+  };
+  await Promise.all(Array.from({length: Math.min(4, locations.length)}, worker));
   return Object.fromEntries(responses);
 }
 ```
@@ -472,7 +506,9 @@ MGeND SPARQL の結果と TogoVar REST API の結果を統合し、内部処理�
        "tgv_link", "genotype_count_alt_alt", "genotype_count_alt_ref",
        "mgend_id", "mgend_url", "genelabel", "hgncurl", "hgncID"]
     : ["tgv_id", "tgv_link", "position", "title", "Clinvar_link", "Clinvar_id",
-       "Interpretation", "type", "MedGen_id", "MedGen_link", "mondo", "mondo_id"];
+       "Interpretation", "type", "MedGen_id", "MedGen_link", "mondo", "mondo_id",
+       "genotype_count_alt_alt", "genotype_count_alt_ref",
+       "genotype_count_alt_alt_link", "genotype_count_alt_ref_link", "mgend_id", "mgend_url"];
   const rows = input.target === "mgend" ? mgend_variants : clinvar_variants;
   return rows.map(row => Object.fromEntries(keys.map(key => [key, row[key]])));
 }
@@ -487,9 +523,9 @@ MGeND SPARQL の結果と TogoVar REST API の結果を統合し、内部処理�
 ```
 
 ## Description
-- 最終レスポンスは下記の例と同じキー構成です（ClinVar 12キー、MGeND 20キー）。ClinVarのIDは `Clinvar_id` です。countはMGeNDのみ返します。
-- MGeNDのcountは欠損を除いたデータセットの合計です。0と欠損のみの場合は0、すべて欠損または照合不可の場合は「No Data」です。0は全データセットでの不在を意味しません。
-- frequencyリンク用のキーはレスポンスに含めません。ローカルビューアはMGeNDの `tgv_id` から `#frequency` URLを生成し、数値・0・No Dataにリンクを付けます。IDがない場合はリンクを付けません。
+- 最終レスポンスは下記の例と同じキー構成です（ClinVar 18キー、MGeND 20キー）。ClinVarのIDは `Clinvar_id` です。両経路でcountを返します。ClinVarの追加6キーは既存12キーの後ろに配置します。
+- countは欠損を除いたデータセットの合計です。0と欠損のみの場合は0、すべて欠損または照合不可の場合は「No Data」です。0は全データセットでの不在を意味しません。
+- ClinVarのfrequencyリンクは照合したREST側IDを優先し、なければSPARQL側IDを使って返します。MGeNDのリンクはビューアが `tgv_id` から生成します。数値・0・No Dataにリンクを付け、IDがない場合はリンクを付けません。
 - ClinVar / MGeND の疾患関連レコードを取得します。結果は転写産物・疾患・分類ごとの行を含み、行数はユニークな変異数ではありません。
 - NANDOの直接のexactMatch / closeMatchを対象とします。子疾患は展開しません。MGeNDはMONDOのOMIM Phenotypic Series経由で、c.HGVS・位置・遺伝子情報が揃うレコードに限定されます。全関連変異を網羅する検索ではありません。
 - TogoVar REST APIとの照合はGRCh38を対象とします。一致が確認できない補完情報は空文字または「No Data」とします。
@@ -521,7 +557,13 @@ MGeND SPARQL の結果と TogoVar REST API の結果を統合し、内部処理�
     "MedGen_id": "C4083008",
     "MedGen_link": "http://ncbi.nlm.nih.gov/medgen/C4083008",
     "mondo": "http://purl.obolibrary.org/obo/MONDO_0007691",
-    "mondo_id": "MONDO:0007691"
+    "mondo_id": "MONDO:0007691",
+    "genotype_count_alt_alt": "No Data",
+    "genotype_count_alt_ref": "No Data",
+    "genotype_count_alt_alt_link": "https://grch38.togovar.org/variant/tgv398044273#frequency",
+    "genotype_count_alt_ref_link": "https://grch38.togovar.org/variant/tgv398044273#frequency",
+    "mgend_id": "",
+    "mgend_url": ""
   },
   ```
   - mgend

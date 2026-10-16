@@ -1,0 +1,83 @@
+{
+  "recorded_at_utc": "2026-10-02T01:10:14.770817+00:00",
+  "nando_id": "1201041",
+  "before": {
+    "endpoint": "http://localhost:13000/sparqlist/trace/nanbyodata_get_variant_by_nando_id",
+    "http_status": 500,
+    "block": "clinvar_togovar",
+    "error": "TypeError: fetch failed",
+    "cause": "UND_ERR_CONNECT_TIMEOUT",
+    "connect_timeout_ms": 10000,
+    "unique_locations": 661
+  },
+  "after": {
+    "http_status": 200,
+    "clinvar_rows": 748,
+    "mgend_rows": 0,
+    "request_seconds": 132.226663,
+    "trace_elapsed_ms": 130771,
+    "steps": [
+      {
+        "name": "input",
+        "elapsed_ms": 18
+      },
+      {
+        "name": "nando2mondo2omim",
+        "elapsed_ms": 1051
+      },
+      {
+        "name": "nando2mondo2mgend",
+        "elapsed_ms": 141
+      },
+      {
+        "name": "nando2mondo2medgen",
+        "elapsed_ms": 42
+      },
+      {
+        "name": "medgen",
+        "elapsed_ms": 6
+      },
+      {
+        "name": "medgen2clinvar2togovar",
+        "elapsed_ms": 2087
+      },
+      {
+        "name": "togovar",
+        "elapsed_ms": 12
+      },
+      {
+        "name": "clinvar_togovar",
+        "elapsed_ms": 124833
+      },
+      {
+        "name": "clinvar_variants",
+        "elapsed_ms": 81
+      },
+      {
+        "name": "mgend_variants",
+        "elapsed_ms": 4
+      },
+      {
+        "name": "variants",
+        "elapsed_ms": 19
+      },
+      {
+        "name": "Output",
+        "elapsed_ms": 3
+      }
+    ],
+    "all_output_fields_equal_to_successful_curl_harness": true,
+    "results_sha256": "4ea20bca8a9b30f3d2b98e14432a35685ad23bd1a88a321f13b171402d650b35"
+  },
+  "tests": {
+    "command": "node --test --test-reporter=tap tests/*.test.mjs",
+    "passed": 46,
+    "failed": 0
+  },
+  "sha256": {
+    "nanbyodata_get_variant_by_nando_id.md": "63542d7e95ac2140d4419ddcd1c5e4a4551d9cef41a40c91db5e18718b3259b4",
+    "tests/variants.test.mjs": "43b14143694821cc966d14bec084266e1d9f3426a08e8d8ffc21bf13fd7a6f4b",
+    "tests/live-counts.test.mjs": "b4a7ed2e6d34e36c83f7e694385c858d3938daf72d6fe7379656ea58b8f3215f",
+    "scripts/variant-blocks.mjs": "4244cfce0737ac769c486cbc4e7f4f8c30197f430357017f0dda1fc335b69cc5"
+  }
+}
